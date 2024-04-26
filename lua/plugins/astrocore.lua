@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -46,9 +46,12 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        -- navigate buffer tabs with `H` and `L`
-        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        -- navigate buffer tabs with `<A-h>` and `<A-l>`
+        ["<A-h>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        ["<A-l>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+
+        -- Telescope find
+        ["<C-p>"] = { ":Telescope find_files<cr>", desc = "Find files" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {
@@ -64,6 +67,11 @@ return {
         ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+        -- Close hidden buffers
+        ["<Leader>bh"] = {
+          function() require("close_buffers").delete { type = "hidden", force = true } end,
+          desc = "Close hidden buffers",
+        },
       },
       t = {
         -- setting a mapping to false will disable it
