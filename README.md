@@ -1,9 +1,16 @@
 ## TODO
 - Plugins
-  - https://github.com/nyngwang/NeoZoom.lua
-  - https://github.com/troydm/zoomwintab.vim
 - Keybinds
-  - neotree
-    - https://github.com/nvim-neo-tree/neo-tree.nvim
-    - change default keybind for splitting into window picker split
-
+  - neoclip
+    - https://github.com/AckslD/nvim-neoclip.lua
+    - change telescope keybind when selecting yanks
+    - change telescope keybind when pasting yanks
+  - astrocore
+    - Change the opts into function
+      - https://github.com/AstroNvim/AstroNvim/blob/2745d624d3a75d80ac2b795e120f84210df88dff/lua/astronvim/plugins/_astrocore.lua#L29-L81
+- Issue
+  - Performance issue
+    - smarts-split
+      - investigate why is it slow to change pane from neovim window to wezterm pane
+      - investigate why is it slow to change neovim window to the direction when there is no available neovim window
+      - Changing direction is faster when there is no available wezterm pane

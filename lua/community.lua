@@ -8,8 +8,9 @@
 return {
   -- import/override with your plugins folder
   "AstroNvim/astrocommunity",
-  -- LSP
+  -- PACK
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
 
   -- MOTION
   { import = "astrocommunity.motion.nvim-surround" },
@@ -28,7 +29,7 @@ return {
   { import = "astrocommunity.file-explorer.oil-nvim" },
 
   -- EDITING SUPPORT
-  { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+  -- { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 
   -- COLORSCHEME
   { import = "astrocommunity.colorscheme.catppuccin" },
@@ -38,4 +39,10 @@ return {
 
   -- SCROLLING
   { import = "astrocommunity.scrolling.mini-animate" },
+
+  -- RECIPE
+  -- { import = "astrocommunity.recipe.vscode" },
+
+  -- nvim-neoclip-lua
+  { import = "astrocommunity.register.nvim-neoclip-lua" },
 }

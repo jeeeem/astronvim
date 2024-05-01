@@ -32,6 +32,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        swapfile = false, -- sets vim.opt.swapfile
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -72,6 +73,19 @@ return {
           function() require("close_buffers").delete { type = "hidden", force = true } end,
           desc = "Close hidden buffers",
         },
+
+        -- Tabs
+        ["<Leader>t"] = { desc = "Tabs" },
+        ["<Leader>te"] = { ":tabe<cr>", desc = "New tab" },
+        ["<Leader>tc"] = { ":tabc<cr>", desc = "Close tab" },
+        ["<Leader>tf"] = false,
+        ["<Leader>th"] = false,
+        ["<Leader>tl"] = false,
+        ["<Leader>tn"] = false,
+        ["<Leader>tp"] = false,
+        ["<Leader>tt"] = false,
+        ["<Leader>tu"] = false,
+        ["<Leader>tv"] = false,
       },
       t = {
         -- setting a mapping to false will disable it
