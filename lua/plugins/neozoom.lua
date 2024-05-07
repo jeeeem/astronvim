@@ -18,7 +18,7 @@ return {
             -- NOTE: omit `top`/`left` to center the floating window vertically/horizontally.
             -- top = 0,
             -- left = 0.17,
-            width = 150,
+            width = 300,
             height = 0.85,
           },
           -- NOTE: check :help nvim_open_win() for possible border values.

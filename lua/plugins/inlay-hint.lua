@@ -1,0 +1,27 @@
+return {
+  -- "AstroNvim/astrolsp",
+  -- NOTE: This will make it so that when you enable inlay hints (either by
+  -- default or with <Leader>uh) it will only show them when you aren't in
+  -- insert mode. When you go into insert mode it would disable them,
+  -- opts = {
+  --   autocmds = {
+  --     no_insert_inlay_hints = {
+  --       cond = "textDocument/inlayHint",
+  --       {
+  --         event = "InsertEnter",
+  --         desc = "disable inlay hints on insert",
+  --         callback = function(args)
+  --           if vim.b[args.buf].inlay_hints then vim.lsp.inlay_hint.enable(false, { bufnr = args.buf }) end
+  --         end,
+  --       },
+  --       {
+  --         event = { "TextChanged", "InsertLeave" },
+  --         desc = "enable inlay hints when leaving insert",
+  --         callback = function(args)
+  --           if vim.b[args.buf].inlay_hints then vim.lsp.inlay_hint.enable(true, { bufnr = args.buf }) end
+  --         end,
+  --       },
+  --     },
+  --   },
+  -- },
+}

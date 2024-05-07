@@ -48,8 +48,8 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs with `<A-h>` and `<A-l>`
-        ["<A-h>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-        ["<A-l>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        -- ["<A-h>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        -- ["<A-l>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
 
         -- Telescope find
         ["<C-p>"] = { ":Telescope find_files<cr>", desc = "Find files" },
@@ -86,6 +86,23 @@ return {
         ["<Leader>tt"] = false,
         ["<Leader>tu"] = false,
         ["<Leader>tv"] = false,
+
+        -- Quickfix
+        ["<F1>"] = {
+          function()
+            local windows = vim.fn.getwininfo()
+            for _, win in pairs(windows) do
+              if win["quickfix"] == 1 then
+                vim.cmd.cclose()
+                return
+              end
+            end
+            vim.cmd.copen()
+          end,
+          desc = "Open quickfix list",
+        },
+        ["<F3>"] = { ":cprev<cr>", desc = "Previous quickfix list item" },
+        ["<F4>"] = { ":cnext<cr>", desc = "Next quickfix list item" },
       },
       t = {
         -- setting a mapping to false will disable it
