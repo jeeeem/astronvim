@@ -9,14 +9,17 @@ return {
   -- import/override with your plugins folder
   "AstroNvim/astrocommunity",
   -- PACK
+  { import = "astrocommunity.pack.angular" },
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
+  -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- MOTION
   { import = "astrocommunity.motion.nvim-surround" },
   -- { import = "astrocommunity.motion.harpoon" },
   { import = "astrocommunity.motion.mini-move" },
-  { import = "astrocommunity.motion.flash-nvim" },
+  -- { import = "astrocommunity.motion.flash-nvim" },
 
   -- GIT
   { import = "astrocommunity.git.blame-nvim" },
@@ -29,7 +32,10 @@ return {
   { import = "astrocommunity.file-explorer.oil-nvim" },
 
   -- EDITING SUPPORT
-  -- { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+
+  -- Programming Language Support
+  -- { import = "astrocommunity.programming-language-support.rest-nvim" },
+  { import = "astrocommunity.programming-language-support.nvim-jqx" },
 
   -- COLORSCHEME
   { import = "astrocommunity.colorscheme.catppuccin" },
@@ -42,7 +48,8 @@ return {
 
   -- RECIPE
   -- { import = "astrocommunity.recipe.vscode" },
+  { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
 
-  -- nvim-neoclip-lua
+  -- Register
   { import = "astrocommunity.register.nvim-neoclip-lua" },
 }
