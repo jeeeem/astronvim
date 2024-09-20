@@ -10,10 +10,15 @@ return {
   "AstroNvim/astrocommunity",
   -- PACK
   { import = "astrocommunity.pack.angular" },
+  { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   -- { import = "astrocommunity.pack.full-dadbod" },
+
+  -- MARKDOWN
+  { import = "astrocommunity.markdown-and-latex.markview-nvim" },
+  { import = "astrocommunity.markdown-and-latex.peek-nvim" },
 
   -- MOTION
   { import = "astrocommunity.motion.nvim-surround" },
@@ -41,7 +46,7 @@ return {
   { import = "astrocommunity.colorscheme.catppuccin" },
 
   -- PROJECT
-  { import = "astrocommunity.project.nvim-spectre" },
+  -- { import = "astrocommunity.project.nvim-spectre" },
 
   -- SCROLLING
   { import = "astrocommunity.scrolling.mini-animate" },
