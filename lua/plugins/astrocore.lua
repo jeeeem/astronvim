@@ -50,6 +50,9 @@ return {
         -- navigate buffer tabs with `<A-h>` and `<A-l>`
         -- ["<A-h>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         -- ["<A-l>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        
+        -- Force CWD
+        ["<Leader>E"] = { ":Neotree reveal_force_cwd<cr>", desc = "Toggle CWD Explorer" },
 
         -- Telescope find
         ["<C-p>"] = { ":Telescope find_files<cr>", desc = "Find files" },
