@@ -51,8 +51,15 @@ return {
         -- ["<A-h>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         -- ["<A-l>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         
-        -- Force CWD
-        ["<Leader>E"] = { ":Neotree reveal_force_cwd<cr>", desc = "Toggle CWD Explorer" },
+        ["<Leader>e"] = {
+          function()
+            local minifiles = require("mini.files")
+            local buf_name = vim.api.nvim_buf_get_name(0)
+            local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
+            minifiles.open(path)
+            minifiles.reveal_cwd()
+          end,
+          desc = "Toggle CWD Explorer" },
 
         -- Telescope find
         ["<C-p>"] = { ":Telescope find_files<cr>", desc = "Find files" },

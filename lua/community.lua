@@ -9,7 +9,8 @@ return {
   -- import/override with your plugins folder
   "AstroNvim/astrocommunity",
   -- PACK
-  { import = "astrocommunity.pack.angular" },
+  -- { import = "astrocommunity.pack.angular" },
+  { import = "astrocommunity.pack.typescript-deno" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.java" },
@@ -17,7 +18,7 @@ return {
   -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- MARKDOWN
-  { import = "astrocommunity.markdown-and-latex.markview-nvim" },
+  -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.markdown-and-latex.peek-nvim" },
 
   -- MOTION
@@ -35,6 +36,7 @@ return {
 
   -- FILE EXPLORER
   { import = "astrocommunity.file-explorer.oil-nvim" },
+  { import = "astrocommunity.file-explorer.mini-files" },
 
   -- EDITING SUPPORT
 
