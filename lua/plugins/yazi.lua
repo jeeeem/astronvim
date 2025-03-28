@@ -8,9 +8,7 @@ return {
     -- 👇 in this section, choose your own keymappings!
     {
       "<leader>-",
-      function()
-        require("yazi").yazi()
-      end,
+      function() require("yazi").yazi() end,
       desc = "Open the file manager",
     },
     -- {
@@ -49,7 +47,7 @@ return {
     -- the type of border to use for the floating window. Can be many values,
     -- including 'none', 'rounded', 'single', 'double', 'shadow', etc. For
     -- more information, see :h nvim_open_win
-    yazi_floating_window_border = 'rounded',
+    yazi_floating_window_border = "rounded",
 
     hooks = {
       -- if you want to execute a custom action when yazi has been opened,

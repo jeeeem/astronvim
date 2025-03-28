@@ -1,82 +1,34 @@
-## TODO
-- Plugins
-  - https://github.com/jake-stewart/multicursor.nvim
-- Keybinds
-  - neoclip
-    - https://github.com/AckslD/nvim-neoclip.lua
-    - change telescope keybind when selecting yanks
-    - change telescope keybind when pasting yanks
-  - astrocore
-    - Change the opts into function
-      - https://github.com/AstroNvim/AstroNvim/blob/2745d624d3a75d80ac2b795e120f84210df88dff/lua/astronvim/plugins/_astrocore.lua#L29-L81
-  - flash.nvim
-    - Remove keybind for 'S' keybind, since we usually use it for modifying whole line of code/text
-  - lsp-signature
-    - add toggle keybind
-    - https://github.com/ray-x/lsp_signature.nvim?tab=readme-ov-file#customize-the-keymap-in-your-config
-- LSP
-  - configure cucumber
+# AstroNvim Template
 
-```lua
-local ok, lsp = pcall(require, "lspconfig")
+**NOTE:** This is for AstroNvim v5+
 
-if not ok then
-return
-end
+A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+## 🛠️ Installation
 
-local opts = {
-root_dir = lsp.util.root_pattern(root_markers),
-settings = {
-cucumber = {
-features = {
--- "src/test/**/*.feature",
--- "features/**/*.feature",
--- "tests/**/*.feature",
--- "*specs*/**/.feature"
+#### Make a backup of your current nvim and shared folder
 
--- for work
-"hrt/src/test/**/benefits/**/.feature",
--- "features/**/benefits/**/*.feature",
--- "src/test/**/benefits/**/*.feature",
--- "features/**/benefits/**/*.feature",
-},
-glue = {
--- "src/test/**/*.java",
--- "features/**/*.js",
--- "features/**/*.jsx",
--- "features/**/*.ts",
--- "features/**/*.tsx",
--- "features/**/*.php",
--- "features/**/*.py",
--- "tests/**/*.py",
--- "tests/**/*.rs",
--- "features/**/*.rs",
--- "features/**/*.rb",
--- "*specs*/**/.cs",
-
--- for work
-"hrt/src/test/**/benefits/**/*.java",
-"src/test/**/benefits/**/*.java",}
-}
-},
-on_attach = function(client, bufnr)
-print("attached to cucumber file")
-vim.keymap.set('n', "gd", vim.lsp.buf.definition, { buffer = 0 })
-vim.keymap.set('n', "gn", vim.diagnostic.goto_next, { buffer = 0 })
-vim.keymap.set('n', "gb", vim.diagnostic.goto_prev, { buffer = 0 })
-end
-}
-
-require("lvim.lsp.manager").setup("cucumber_language_server", opts)
+```shell
+mv ~/.config/nvim ~/.config/nvim.bak
+mv ~/.local/share/nvim ~/.local/share/nvim.bak
+mv ~/.local/state/nvim ~/.local/state/nvim.bak
+mv ~/.cache/nvim ~/.cache/nvim.bak
 ```
-  - configure autohotkey
-    - https://github.com/thqby/vscode-autohotkey2-lsp?tab=readme-ov-file#vim-and-neovim
 
-- Issue
-  - Performance issue
-    - smarts-split
-      - investigate why is it slow to change pane from neovim window to wezterm pane
-      - investigate why is it slow to change neovim window to the direction when there is no available neovim window
-      - Changing direction is faster when there is no available wezterm pane
+#### Create a new user repository from this template
+
+Press the "Use this template" button above to create a new repository to store your user configuration.
+
+You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
+
+#### Clone the repository
+
+```shell
+git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
+```
+
+#### Start Neovim
+
+```shell
+nvim
+```

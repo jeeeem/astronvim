@@ -6,15 +6,13 @@
 
 ---@type LazySpec
 return {
-  -- import/override with your plugins folder
   "AstroNvim/astrocommunity",
-  -- PACK
-  -- { import = "astrocommunity.pack.angular" },
+  { import = "astrocommunity.pack.lua" },
+  -- import/override with your plugins folder
   { import = "astrocommunity.pack.typescript-deno" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.java" },
-  { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
+  -- { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- MARKDOWN

@@ -12,10 +12,10 @@ return {
   opts = {
     -- Configure core features of AstroNvim
     features = {
-      large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
+      large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics = { virtual_text = false, virtual_lines = true }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
@@ -30,9 +30,8 @@ return {
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
-        swapfile = false, -- sets vim.opt.swapfile
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -47,42 +46,45 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        -- navigate buffer tabs with `<A-h>` and `<A-l>`
-        -- ["<A-h>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-        -- ["<A-l>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        
-        ["<Leader>e"] = {
-          function()
-            local minifiles = require("mini.files")
-            local buf_name = vim.api.nvim_buf_get_name(0)
-            local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
-            minifiles.open(path)
-            minifiles.reveal_cwd()
-          end,
-          desc = "Toggle CWD Explorer" },
-
-        -- Telescope find
-        ["<C-p>"] = { ":Telescope find_files<cr>", desc = "Find files" },
+        -- navigate buffer tabs
+        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- mappings seen under group name "Buffer"
-        ["<Leader>bD"] = {
+        ["<Leader>bd"] = {
           function()
             require("astroui.status.heirline").buffer_picker(
-              function(bufnr) require("astrocore.buffer").close(bufnr) end
+              function(bufnr) require("astrocore.buffer").close(bufnr, true) end
             )
           end,
-          desc = "Pick to close",
+          desc = "Close buffer from tabline",
         },
-        -- tables with just a `desc` key will be registered with which-key if it's installed
-        -- this is useful for naming menus
-        ["<Leader>b"] = { desc = "Buffers" },
-        -- quick save
-        -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
         -- Close hidden buffers
         ["<Leader>bh"] = {
           function() require("close_buffers").delete { type = "hidden", force = true } end,
           desc = "Close hidden buffers",
         },
+
+        -- tables with just a `desc` key will be registered with which-key if it's installed
+        -- this is useful for naming menus
+        -- ["<Leader>b"] = { desc = "Buffers" },
+
+        -- Smart picker
+        ["<C-p>"] = { function() Snacks.picker.smart() end, desc = "Smart find files" },
+        ["<Leader>e"] = {
+          function()
+            local minifiles = require "mini.files"
+            local buf_name = vim.api.nvim_buf_get_name(0)
+            local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
+            minifiles.open(path)
+            minifiles.reveal_cwd()
+          end,
+          desc = "Toggle CWD Explorer",
+        },
+
+        -- setting a mapping to false will disable it
+        -- ["<C-S>"] = false,
 
         -- Tabs
         ["<Leader>t"] = { desc = "Tabs" },
@@ -116,6 +118,7 @@ return {
         ["<F3>"] = { ":cprev<cr>", desc = "Previous quickfix list item" },
         ["<F4>"] = { ":cnext<cr>", desc = "Next quickfix list item" },
       },
+
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,

@@ -5,16 +5,16 @@ return {
     "mfussenegger/nvim-jdtls",
     opts = {
       settings = {
-        -- java = {
-        --   configuration = {
-        --     runtimes = {
-        --       {
-        --         name = "JavaSE-11",
-        --         path = "/usr/lib/jvm/java-11-openjdk/",
-        --       },
-        --     },
-        --   },
-        -- },
+        java = {
+          configuration = {
+            runtimes = {
+              {
+                name = "JavaSE-21",
+                path = "C:/Users/jberen/scoop/apps/openjdk21/current/",
+              },
+            },
+          },
+        },
         format = {
           enabled = false,
           settings = { -- you can use your preferred format style
