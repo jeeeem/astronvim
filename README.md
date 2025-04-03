@@ -10,3 +10,36 @@
 3. blink
   - How to enable fuzzy matcher
   - https://github.com/AstroNvim/AstroNvim/blob/main/lua/astronvim/plugins/blink.lua
+4. harpoon with snack picker
+  - https://github.com/folke/snacks.nvim/discussions/1058
+5. luasnip
+  - how to add in astronvim
+6. smarts-splits
+  - slowness when navigation from nvim to wezterm pane
+  - https://github.com/mrjones2014/smart-splits.nvim/issues/261
+  - https://github.com/wezterm/wezterm/issues/6436
+  - https://github.com/LGUG2Z/masir/issues/15
+7. snacks-picker
+  - configure matcher file_pos
+    - https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
+
+## LSP
+- cucumber
+  - add this on astronvim config
+    - https://github.com/jeeeem/lvim/blob/main/ftplugin/cucumber.lua
+
+## Possible Plugin
+- https://github.com/otavioschwanck/arrow.nvim
+- https://github.com/chrishrb/gx.nvim
+  - https://github.com/ruicsh/nvim-config/blob/main/lua/plugins/gx.lua
+
+- Custom plugin
+  - https://github.com/adiSuper94/config/blob/main/nvim/lua/plugins/fuzzysearch.lua
+
+## Experiment
+- https://www.reddit.com/r/neovim/comments/1js5bg8/harpoon_in_50_lines_of_lua_code_using_native/
+
+## Tutorial
+- How to make luasnip snippets
+  - https://www.youtube.com/playlist?list=PL0EgBggsoPCnZ3a6c0pZuQRMgS_Z8-Fnr
+

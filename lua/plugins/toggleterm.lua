@@ -42,13 +42,38 @@ return {
         maps.n["<Leader>Th"] =
           { "<Cmd>ToggleTerm size=10 direction=horizontal<CR>", desc = "ToggleTerm horizontal split" }
         maps.n["<Leader>Tv"] = { "<Cmd>ToggleTerm size=80 direction=vertical<CR>", desc = "ToggleTerm vertical split" }
-        maps.n["<F7>"] = { '<Cmd>execute v:count . "ToggleTerm"<CR>', desc = "Toggle terminal" }
+        maps.n["<F7>"] = { '<Cmd>execute v:count . "ToggleTerm direction=float"<CR>', desc = "Toggle terminal" }
         maps.t["<F7>"] = { "<Cmd>ToggleTerm<CR>", desc = maps.n["<F7>"].desc }
         maps.i["<F7>"] = { "<Esc>" .. maps.t["<F7>"][1], desc = maps.n["<F7>"].desc }
-        maps.n["<C-'>"] = maps.n["<F7>"] -- requires terminal that supports binding <C-'>
-        maps.t["<C-'>"] = maps.t["<F7>"] -- requires terminal that supports binding <C-'>
-        maps.i["<C-'>"] = maps.i["<F7>"] -- requires terminal that supports binding <C-'>
+        maps.n["<C-\\>"] = maps.n["<F7>"] -- requires terminal that supports binding <C-'>
+        maps.t["<C-\\>"] = maps.t["<F7>"] -- requires terminal that supports binding <C-'>
+        maps.i["<C-\\>"] = maps.i["<F7>"] -- requires terminal that supports binding <C-'>
       end,
     },
   },
+  opts = {
+    -- Change the default shell. Can be a string or a function returning a string
+    shell = "nu --config ~/.config/nushell/init.nu --env-config ~/.config/nushell/env.nu",
+    auto_scroll = false, -- automatically scroll to the bottom on terminal output
+    terminal_mappings = false, -- whether or not the open mapping applies in the opened terminals
+    shade_terminals = false,  -- NOTE: this option takes priority over highlights specified so if you specify Normal highlights you should set this to false
+    shading_factor = 2, -- the percentage by which to lighten dark terminal background, default: -30
+    shading_ratio = 2, -- the ratio of shading factor for light/dark terminal background, default: -3
+    shade_filetypes = {},
+    size = 10,
+    float_opts = { 
+      border = "double",
+      winblend = 0
+    },
+    highlights = {
+      Normal = { link = "Normal" },
+      NormalNC = { link = "NormalNC" },
+      NormalFloat = { link = "NormalFloat" },
+      FloatBorder = { link = "FloatBorder" },
+      StatusLine = { link = "StatusLine" },
+      StatusLineNC = { link = "StatusLineNC" },
+      WinBar = { link = "WinBar" },
+      WinBarNC = { link = "WinBarNC" },
+    },
+  }
 }

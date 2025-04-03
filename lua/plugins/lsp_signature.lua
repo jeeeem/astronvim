@@ -6,17 +6,17 @@ local cfg = {
 
   bind = true, -- This is mandatory, otherwise border config won't get registered.
                -- If you want to hook lspsaga or other signature handler, pls set to false
-  doc_lines = 10, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+  doc_lines = 100, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
                  -- set to 0 if you DO NOT want any API comments be shown
                  -- This setting only take effect in insert mode, it does not affect signature help in normal
                  -- mode, 10 by default
 
-  max_height = 12, -- max height of signature floating_window
-  max_width = function()
-    return vim.api.nvim_win_get_width(0) * 0.8
-  end, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-                  -- the value need >= 40
-                  -- if max_width is function, it will be called
+  max_height = 100, -- max height of signature floating_window
+  -- max_width = function()
+  --   return vim.api.nvim_win_get_width(0) * 0.8
+  -- end, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+  --                 -- the value need >= 40
+  --                 -- if max_width is function, it will be called
   wrap = true, -- allow doc/signature text wrap inside floating_window, useful if your lsp return doc/sig is too long
   floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
 
@@ -32,13 +32,13 @@ local cfg = {
   close_timeout = 4000, -- close floating window after ms when laster parameter is entered
   fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
   hint_enable = true, -- virtual hint enable
-  hint_prefix = "🐼 ",  -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
+  -- hint_prefix = "🐼 ",  -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
   -- or, provide a table with 3 icons
-  -- hint_prefix = {
-  --     above = "↙ ",  -- when the hint is on the line above the current line
-  --     current = "← ",  -- when the hint is on the same line
-  --     below = "↖ "  -- when the hint is on the line below the current line
-  -- }
+  hint_prefix = {
+      above = "↙ ",  -- when the hint is on the line above the current line
+      current = "← ",  -- when the hint is on the same line
+      below = "↖ "  -- when the hint is on the line below the current line
+  },
   hint_scheme = "String",
   hint_inline = function() return false end,  -- should the hint be inline(nvim 0.10 only)?  default false
   -- return true | 'inline' to show hint inline, return 'eol' to show hint at end of line, return false to disable
@@ -47,15 +47,11 @@ local cfg = {
   handler_opts = {
     border = "rounded"   -- double, rounded, single, shadow, none, or a table of borders
   },
-
   always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
-
   auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
   extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
   zindex = 200, -- by default it will be on top of all floating windows, set to <= 50 send it to bottom
-
   padding = '', -- character to pad on left and right of signature can be ' ', or '|'  etc
-
   transparency = nil, -- disabled by default, allow floating win transparent value 1~100
   shadow_blend = 36, -- if you using shadow as border use this set the opacity
   shadow_guibg = 'Black', -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
@@ -68,7 +64,7 @@ local cfg = {
   select_signature_key = nil, -- cycle to next signature, e.g. '<M-n>' function overloading
   move_signature_window_key = nil, -- move the floating window, e.g. {'<M-k>', '<M-j>'} to move up and down, or
     -- table of 4 keymaps, e.g. {'<M-k>', '<M-j>', '<M-h>', '<M-l>'} to move up, down, left, right
-  move_cursor_key = nil, -- imap, use nvim_set_current_win to move cursor between current win and floating window
+  move_cursor_key = '<M-p>', -- imap, use nvim_set_current_win to move cursor between current win and floating window
   -- e.g. move_cursor_key = '<M-p>',
   -- once moved to floating window, you can use <M-d>, <M-u> to move cursor up and down
   keymaps = {}  -- relate to move_cursor_key; the keymaps inside floating window with arguments of bufnr
@@ -79,7 +75,7 @@ local cfg = {
 }
 
 return {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup(cfg) end,
+    -- "ray-x/lsp_signature.nvim",
+    -- event = "BufRead",
+    -- config = function() require("lsp_signature").setup(cfg) end,
   }

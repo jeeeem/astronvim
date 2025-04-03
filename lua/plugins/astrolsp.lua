@@ -15,6 +15,19 @@ return {
       codelens = true, -- enable/disable codelens refresh on start
       inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
+      -- signature_help = true, -- enable/disable lsp signature help
+
+    },
+    defaults ={
+      hover = {
+        border = "rounded",
+        silent = true,
+      },
+      signature_help = {
+        border = "rounded",
+        silent = true,
+        focusable = true,
+      }
     },
     -- customize lsp formatting options
     formatting = {
