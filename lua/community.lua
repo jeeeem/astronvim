@@ -12,7 +12,7 @@ return {
   { import = "astrocommunity.pack.typescript-deno" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.lua" },
-  -- { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
+  { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- MARKDOWN
@@ -30,7 +30,7 @@ return {
   { import = "astrocommunity.git.diffview-nvim" },
 
   -- FUZZY
-  { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
+  -- { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
 
   -- FILE EXPLORER
   { import = "astrocommunity.file-explorer.oil-nvim" },
@@ -54,7 +54,17 @@ return {
   -- RECIPE
   -- { import = "astrocommunity.recipe.vscode" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
+  { import = "astrocommunity.recipes.picker-lsp-mappings" },
+  { import = "astrocommunity.recipes.heirline-vscode-winbar" },
+  { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
+  { import = "astrocommunity.recipes.vscode" },
+  { import = "astrocommunity.recipes.picker-nvchad-theme" },
 
   -- Register
-  { import = "astrocommunity.register.nvim-neoclip-lua" },
+  -- { import = "astrocommunity.register.nvim-neoclip-lua" },
+
+  -- THEMES
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  { import = "astrocommunity.colorscheme.vscode-nvim" },
+  { import = "astrocommunity.colorscheme.dracula-nvim" },
 }
