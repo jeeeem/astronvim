@@ -21,7 +21,7 @@ return {
         "debugpy",
 
         -- install any other package
-        "tree-sitter-cli",
+        -- "tree-sitter-cli",
       },
     },
   },
