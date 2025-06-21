@@ -77,7 +77,14 @@ return {
         -- ["<Leader>b"] = { desc = "Buffers" },
 
         -- Smart picker
-        ["<C-p>"] = { function() Snacks.picker.smart() end, desc = "Smart find files" },
+        -- ["<C-p>"] = { function() Snacks.picker.smart() end, desc = "Smart find files" },
+        ["<C-p>"] = { function()
+              require("snacks").picker.files {
+                hidden = vim.tbl_get((vim.uv or vim.loop).fs_stat ".git" or {}, "type") == "directory",
+              }
+            end,
+            desc = "Find files",
+          },
         ["<Leader>e"] = {
           function()
             local minifiles = require "mini.files"

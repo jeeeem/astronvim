@@ -22,6 +22,9 @@
 7. snacks-picker
   - configure matcher file_pos
     - https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
+8. heirline
+  - only remove the buffer tab in bufferline, not the buffer
+  - https://github.com/rebelot/heirline.nvim/blob/master/cookbook.md
 
 ## LSP
 - cucumber
@@ -32,7 +35,12 @@
 - https://github.com/otavioschwanck/arrow.nvim
 - https://github.com/chrishrb/gx.nvim
   - https://github.com/ruicsh/nvim-config/blob/main/lua/plugins/gx.lua
-
+- https://github.com/ojroques/nvim-bufdel/
+  - https://github.com/ojroques/nvim-bufdel/issues/9
+  - use other buffer plugin to get rid of this issues:
+     - delete useless buffers aside from the current window of opened buffers
+  - can find reference in snack picker buff
+    - https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 - Custom plugin
   - https://github.com/adiSuper94/config/blob/main/nvim/lua/plugins/fuzzysearch.lua
 
