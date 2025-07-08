@@ -30,6 +30,8 @@
 - cucumber
   - add this on astronvim config
     - https://github.com/jeeeem/lvim/blob/main/ftplugin/cucumber.lua
+- php laravel
+  - https://github.com/adibhanna/laravel.nvim
 
 ## Possible Plugin
 - https://github.com/otavioschwanck/arrow.nvim
@@ -41,6 +43,7 @@
      - delete useless buffers aside from the current window of opened buffers
   - can find reference in snack picker buff
     - https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
+- https://github.com/echaya/neowiki.nvim
 - Custom plugin
   - https://github.com/adiSuper94/config/blob/main/nvim/lua/plugins/fuzzysearch.lua
 

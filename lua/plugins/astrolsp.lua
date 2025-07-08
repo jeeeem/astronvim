@@ -16,9 +16,8 @@ return {
       inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
       -- signature_help = true, -- enable/disable lsp signature help
-
     },
-    defaults ={
+    defaults = {
       hover = {
         border = "rounded",
         silent = true,
@@ -27,7 +26,7 @@ return {
         border = "rounded",
         silent = true,
         focusable = true,
-      }
+      },
     },
     -- customize lsp formatting options
     formatting = {
@@ -94,11 +93,33 @@ return {
     mappings = {
       n = {
         -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
-        gD = {
-          function() vim.lsp.buf.declaration() end,
-          desc = "Declaration of current symbol",
-          cond = "textDocument/declaration",
-        },
+        -- gD = {
+        --   function() vim.lsp.buf.declaration() end,
+        --   desc = "Declaration of current symbol",
+        --   cond = "textDocument/declaration",
+        -- },
+        -- gD= {
+        --   function()
+        --         -- Check if this looks like a Laravel-specific pattern first
+        --         local navigate = require('laravel.navigate')
+        --         if navigate.is_laravel_navigation_context() then
+        --             -- This is a Laravel-specific context, try Laravel navigation
+        --             local success = pcall(navigate.goto_laravel_string)
+        --             if success then
+        --                 return -- Laravel navigation succeeded
+        --             end
+        --         end
+        --
+        --         -- Default to declaration for everything else
+        --         if vim.lsp.buf.declaration then
+        --             vim.lsp.buf.declaration()
+        --         else
+        --             -- Final fallback to built-in definition
+        --             vim.cmd('normal! gd')
+        --         end
+        --   end,
+        --   desc = "Laravel: Go to definition (Laravel strings or LSP) / Go to declaration",
+        -- },
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
