@@ -16,6 +16,15 @@ return {
   -- { import = "astrocommunity.pack.php" },
   -- { import = "astrocommunity.pack.full-dadbod" },
 
+  -- AI
+  { import = "astrocommunity.completion.avante-nvim"},
+  { import = "astrocommunity.completion.copilot-cmp"},
+  -- { import = "astrocommunity.completion.copilot-lua"},
+  -- { import = "astrocommunity.completion.copilot-lua-cmp"}, 
+ 
+  -- EDITING SUPPORT
+  { import = "astrocommunity.editing-support.mcphub-nvim"},
+
   -- MARKDOWN
   -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.markdown-and-latex.peek-nvim" },
@@ -37,8 +46,6 @@ return {
   { import = "astrocommunity.file-explorer.oil-nvim" },
   { import = "astrocommunity.file-explorer.mini-files" },
 
-  -- EDITING SUPPORT
-
   -- Programming Language Support
   -- { import = "astrocommunity.programming-language-support.rest-nvim" },
   { import = "astrocommunity.programming-language-support.nvim-jqx" },
@@ -57,7 +64,7 @@ return {
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
-  { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
+  -- { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.recipes.picker-nvchad-theme" },
   { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },

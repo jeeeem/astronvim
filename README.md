@@ -25,6 +25,7 @@
 8. heirline
   - only remove the buffer tab in bufferline, not the buffer
   - https://github.com/rebelot/heirline.nvim/blob/master/cookbook.md
+  - Add macro recording indicator
 
 ## LSP
 - cucumber
