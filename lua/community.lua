@@ -27,6 +27,7 @@ return {
 
   -- MARKDOWN
   -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.markdown-and-latex.peek-nvim" },
 
   -- MOTION
