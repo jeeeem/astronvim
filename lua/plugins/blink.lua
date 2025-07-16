@@ -3,6 +3,9 @@ return {
   -- enabled = function() return not vim.tbl_contains({ "snacks_picker_input", "snacks_dashboard"}, vim.bo.filetype) end,
   opts = {
     completion = {
+      trigger = {
+			  show_on_insert_on_trigger_character = false,
+		  },
       menu = {
         draw = {
           columns = {

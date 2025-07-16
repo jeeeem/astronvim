@@ -23,7 +23,8 @@ return {
   -- { import = "astrocommunity.completion.copilot-lua-cmp"}, 
  
   -- EDITING SUPPORT
-  { import = "astrocommunity.editing-support.mcphub-nvim"},
+  -- { import = "astrocommunity.editing-support.mcphub-nvim"},
+  { import = "astrocommunity.editing-support.nvim-treesitter-context"},
 
   -- MARKDOWN
   -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },

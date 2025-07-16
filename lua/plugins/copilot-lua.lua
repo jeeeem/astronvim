@@ -3,8 +3,9 @@ local function has_words_before()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
+local function bool2str(bool) return bool and "on" or "off" end
+local copilot = require "copilot.suggestion"
 local function copilot_action(action)
-  local copilot = require "copilot.suggestion"
   return function()
     if copilot.is_visible() then
       copilot[action]()
@@ -34,11 +35,11 @@ return {
       },
     },
     suggestion = {
-      enabled = false,
-      auto_trigger = true,
+      enabled = true,
+      auto_trigger = false,
       hide_during_completion = true,
       debounce = 150,
-      trigger_on_accept = true,
+      trigger_on_accept = false,
       -- keymap = {
       --   accept = "<M-l>",
       --   accept_word = false,
@@ -105,6 +106,7 @@ return {
           pattern = "BlinkCmpMenuClose",
           callback = function() vim.b.copilot_suggestion_hidden = false end,
         })
+
         if not opts.keymap then opts.keymap = {} end
 
         opts.keymap["<Tab>"] = {
@@ -116,22 +118,35 @@ return {
           end,
           "fallback",
         }
-        opts.keymap["<A-[>"] = { copilot_action "prev" }
-        opts.keymap["<A-]>"] = { copilot_action "next" }
+        opts.keymap["<A-i>"] = { copilot_action "prev" }
+        opts.keymap["<A-o>"] = { copilot_action "next" }
+        opts.keymap["<A-Left>"] = { copilot_action "prev" }
+        opts.keymap["<A-Right>"] = { copilot_action "next" }
         opts.keymap["<A-l>"] = { copilot_action "accept_word" }
+        opts.keymap["<A-j>"] = { copilot_action "accept_line", "select_next", "fallback" }
+        opts.keymap["<A-k>"] = { copilot_action "accept" }
+        opts.keymap["<A-;>"] = { function()
+          -- notify if the auto trigger is on or off
+          copilot["toggle_auto_trigger"]()
+          vim.notify(("Copilot auto trigger %s"):format(bool2str(vim.b.copilot_suggestion_auto_trigger)))
+        end
+        }
+        opts.keymap["<A-c>"] = { function()
+          copilot["dismiss"]()
+        end
+        }
         -- opts.keymap["<A-l>"] = {
         --   function()
         --     copilot_action("accept_word")
         --     copilot_action("next")
         --   end,
         -- }
-        opts.keymap["<A-j>"] = { copilot_action "accept_line", "select_next", "fallback" }
-        opts.keymap["<C-Right>"] = { copilot_action "accept_word" }
+        -- opts.keymap["<C-Right>"] = { copilot_action "accept_word" }
         -- opts.keymap["<C-Down>"] = { copilot_action "accept_line" }
-        opts.keymap["<C-Down>"] = { copilot_action "accept_line", "select_next", "fallback" }
+        -- opts.keymap["<C-Down>"] = { copilot_action "accept_line", "select_next", "fallback" }
         -- opts.keymap["<C-L>"] = { copilot_action "accept_word" }
-        opts.keymap["<C-q>"] = { copilot_action "dismiss" }
-        opts.keymap["<C-]>"] = { copilot_action "dismiss" }
+        -- opts.keymap["<C-q>"] = { copilot_action "dismiss" }
+        -- opts.keymap["<C-]>"] = { copilot_action "dismiss" }
         opts.sources.providers.copilot = {
           name = "copilot",
           module = "blink.compat.source",
