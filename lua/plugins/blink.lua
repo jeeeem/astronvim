@@ -2,6 +2,9 @@ return {
   "Saghen/blink.cmp",
   -- enabled = function() return not vim.tbl_contains({ "snacks_picker_input", "snacks_dashboard"}, vim.bo.filetype) end,
   opts = {
+    keymap = {
+      ["<C-e>"] = { "cancel"},
+    },
     completion = {
       trigger = {
 			  show_on_insert_on_trigger_character = false,

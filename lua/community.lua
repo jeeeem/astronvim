@@ -29,7 +29,7 @@ return {
   -- EDITING SUPPORT
   -- { import = "astrocommunity.editing-support.mcphub-nvim"},
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
-
+  { import = "astrocommunity.editing-support.refactoring-nvim" },
 
   -- MARKDOWN
   -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },
