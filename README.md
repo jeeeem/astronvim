@@ -47,6 +47,11 @@
 - https://github.com/echaya/neowiki.nvim
 - Custom plugin
   - https://github.com/adiSuper94/config/blob/main/nvim/lua/plugins/fuzzysearch.lua
+- Springboot
+  - https://github.com/JavaHello/spring-boot.nvim
+- nvim-java
+  - https://github.com/nvim-java/nvim-java
+
 
 ## Experiment
 - https://www.reddit.com/r/neovim/comments/1js5bg8/harpoon_in_50_lines_of_lua_code_using_native/

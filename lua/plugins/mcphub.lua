@@ -3,10 +3,12 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
   },
-  build = "npm install -g mcp-hub@latest",  -- Installs `mcp-hub` node binary globally
+  -- build = "npm install -g mcp-hub@latest",  -- Installs `mcp-hub` node binary globally
+  build = "bundled_build.lua",
   event = "User AstroFile",
   cmd = "MCPHub",
   opts = {
+    use_bundled_binary = true,  -- Use local `mcp-hub` binary
     port = 3000,
     config = vim.fn.expand "~/mcpservers.json",
     log = {
@@ -15,6 +17,17 @@ return {
       file_path = nil,
       prefix = "MCPHub",
     },
+    workspace = {
+      enabled = true, -- Default: true
+      look_for = { ".mcphub/servers.json", ".vscode/mcp.json", ".cursor/mcp.json" },
+      reload_on_dir_changed = true,
+      port_range = { min = 40000, max = 41000 },
+      get_port = nil, -- Optional custom port function
+    },
+    -- global_env = {
+    --   "DBUS_SESSION_BUS_ADDRESS", -- Array-style: uses os.getenv()
+    --   API_KEY = os.getenv("API_KEY"), -- Hash-style: explicit value
+    -- }
   },
   specs = {
     {

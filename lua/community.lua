@@ -17,14 +17,19 @@ return {
   -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- AI
-  { import = "astrocommunity.completion.avante-nvim"},
-  { import = "astrocommunity.completion.copilot-cmp"},
+  { import = "astrocommunity.completion.avante-nvim" },
+  { import = "astrocommunity.completion.copilot-cmp" },
   -- { import = "astrocommunity.completion.copilot-lua"},
-  -- { import = "astrocommunity.completion.copilot-lua-cmp"}, 
- 
+  -- { import = "astrocommunity.completion.copilot-lua-cmp"},
+
+  -- PROGRAMMING SUPPORT
+  { import = "astrocommunity.programming-language-support.kulala-nvim" },
+  { import = "astrocommunity.code-runner.overseer-nvim" },
+
   -- EDITING SUPPORT
   -- { import = "astrocommunity.editing-support.mcphub-nvim"},
-  { import = "astrocommunity.editing-support.nvim-treesitter-context"},
+  { import = "astrocommunity.editing-support.nvim-treesitter-context" },
+
 
   -- MARKDOWN
   -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },
