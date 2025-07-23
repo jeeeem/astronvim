@@ -117,10 +117,10 @@ return {
         optional = true,
         opts = function(_, opts)
             if not (is_laravel_project()) then
-            print "Not a laravel project"
+            -- print "Not a laravel project"
             return
           else
-            print "Laravel project"
+            -- print "Laravel project"
             -- return
             local source_priority = {
               avante = 7,
@@ -145,7 +145,7 @@ return {
                 -- },
                 providers = {
                   lsp = {
-                    max_items = 5,
+                    max_items = 10,
                   },
                   snippets = {
                     max_items = 5,
