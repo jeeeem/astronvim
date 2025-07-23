@@ -31,6 +31,9 @@ return {
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
 
+  -- SEARCH
+  { import = "astrocommunity.search.grug-far-nvim" },
+
   -- MARKDOWN
   -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
