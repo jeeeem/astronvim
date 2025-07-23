@@ -1,5 +1,6 @@
 return {
   "ravitemer/mcphub.nvim",
+  commit = "0b92eae385da36601f1311b30122c18de9e273e9",
   dependencies = {
     "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
   },
