@@ -51,7 +51,7 @@ return {
       treesitter_context = nil, -- it can be { line_shift_down = 2 }, currently not usable, for detail see https://github.com/otavioschwanck/arrow.nvim/pull/43#issue-2236320268
     },
     separate_save_and_remove = false, -- if true, will remove the toggle and create the save/remove keymaps.
-    buffer_leader_key = '\'', -- Per Buffer Mappings
+    buffer_leader_key = '<leader>\'', -- Per Buffer Mappings
     leader_key = "<leader>m",
     save_key = "cwd", -- what will be used as root to save the bookmarks. Can be also `git_root` and `git_root_bare`.
     global_bookmarks = false, -- if true, arrow will save files globally (ignores separate_by_branch)
