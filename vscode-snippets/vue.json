@@ -1,6 +1,6 @@
 {
   "setup": {
-    "prefix": ["setup", "template"],
+    "prefix": ["test"],
     "body": [
       "<template>",
       "\t$1",

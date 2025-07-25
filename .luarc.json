@@ -1,0 +1,9 @@
+{
+    "diagnostics.disable": [
+        ""
+    ],
+    "diagnostics.globals": [
+        "s",
+        "t"
+    ],
+}

@@ -105,7 +105,7 @@ return {
         ["<Leader>n"] = false,
         ["<Leader>w"] = false,
 
-        ["<Leader>t"] = { desc = "Tabs" },
+        ["<Leader>t"] = { desc = "󰓩 Tabs" },
         ["<Leader>t0"] = { ":0tabnew<cr>", desc = "New tab before the first tab", silent = true },
         ["<Leader>te"] = { ":tabnew<cr>", desc = "New tab", silent = true },
         ["<Leader>t$"] = { ":$tabnew<cr>", desc = "New tab after the last tab", silent = true },

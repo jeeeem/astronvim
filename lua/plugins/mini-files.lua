@@ -1,3 +1,5 @@
+-- TODO:
+-- mark f - specific file what you open from
 local set_mark = function(id, path, desc)
     MiniFiles.set_bookmark(id, path, { desc = desc })
   end

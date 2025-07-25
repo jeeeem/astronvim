@@ -1,0 +1,10 @@
+{
+    "function __invoke": {
+        "prefix": "inv",
+        "body": [
+            "public function __invoke(${1: priarg}) {",
+            "}"
+        ],
+        "description": "Create __invoke method using the last php syntax."
+  }
+}

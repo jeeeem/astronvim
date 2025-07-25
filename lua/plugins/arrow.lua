@@ -1,3 +1,10 @@
+-- TODO:
+-- keymap S for removing existing mark and save
+
+-- create a snack picker for this
+-- vim.g.arrow_filenames = vim.g.arrow_filenames or {}
+-- find utils reference on arrow module
+-- require("arrow.persist")
 return {
   "otavioschwanck/arrow.nvim",
   dependencies = {
@@ -40,7 +47,7 @@ return {
       border = "double",
     },
     per_buffer_config = {
-      lines = 2, -- Number of lines showed on preview.
+      lines = 10, -- Number of lines showed on preview.
       sort_automatically = true, -- Auto sort buffer marks.
       satellite = { -- default to nil, display arrow index in scrollbar at every update
         enable = false,
@@ -48,7 +55,10 @@ return {
         priority = 1000,
       },
       zindex = 10, --default 50
-      treesitter_context = nil, -- it can be { line_shift_down = 2 }, currently not usable, for detail see https://github.com/otavioschwanck/arrow.nvim/pull/43#issue-2236320268
+      -- it can be { line_shift_down = 2 }, currently not usable, for detail see https://github.com/otavioschwanck/arrow.nvim/pull/43#issue-2236320268
+      treesitter_context = {
+        liene_shift_down = 2, -- how many lines to shift the context down
+      }
     },
     separate_save_and_remove = false, -- if true, will remove the toggle and create the save/remove keymaps.
     buffer_leader_key = '<leader>\'', -- Per Buffer Mappings

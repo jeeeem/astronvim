@@ -7,7 +7,11 @@
     "snippets": [
       {
         "language": "vue",
-        "path": "./vue.json"
+        "path": "./vscode-snippets/vue.json"
+      },
+      {
+        "language": "php",
+        "path": "./vscode-snippets/php.json"
       }
     ]
   }

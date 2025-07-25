@@ -1,3 +1,4 @@
+local prefix = "<Leader>L"
 -- Find Laravel project root
 local function is_laravel_project()
     local markers = { 'artisan', 'composer.json', 'app/Http', 'config/app.php' }
@@ -50,6 +51,7 @@ return {
       --     },
       --   },
       -- },
+      { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = "󰫐 Laravel" } end },
     },
     cmd = {
       "LaravelStatus",
