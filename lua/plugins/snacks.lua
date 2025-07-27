@@ -89,7 +89,7 @@ return {
         },
       },
       math = {
-        enabled = true, -- enable math expression rendering
+        enabled = false, -- enable math expression rendering
         -- in the templates below, `${header}` comes from any section in your document,
         -- between a start/end header comment. Comment syntax is language-specific.
         -- * start comment: `// snacks: header start`

@@ -7,9 +7,10 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
-  { import = "astrocommunity.pack.lua" },
   -- import/override with your plugins folder
+  { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.typescript-all-in-one" },
+  { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
@@ -67,7 +68,7 @@ return {
   -- { import = "astrocommunity.project.nvim-spectre" },
 
   -- SCROLLING
-  { import = "astrocommunity.scrolling.mini-animate" },
+  -- { import = "astrocommunity.scrolling.mini-animate" },
 
   -- RECIPE
   -- { import = "astrocommunity.recipe.vscode" },

@@ -51,6 +51,8 @@
   - https://github.com/JavaHello/spring-boot.nvim
 - nvim-java
   - https://github.com/nvim-java/nvim-java
+- csv
+  - https://github.com/hat0uma/csvview.nvim
 
 
 ## Experiment
