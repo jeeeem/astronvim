@@ -12,6 +12,10 @@
       {
         "language": "php",
         "path": "./vscode-snippets/php.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./vscode-snippets/typescriptreact.json"
       }
     ]
   }

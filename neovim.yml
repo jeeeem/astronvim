@@ -4,3 +4,23 @@ base: lua51
 globals:
   vim:
     any: true
+  s:
+    any: true
+  sn:
+    any: true
+  isn:
+    any: true
+  t:
+    any: true
+  f:
+    any: true
+  i:
+    any: true
+  c:
+    any: true
+  d:
+    any: true
+  r:
+    any: true
+  fmt:
+    any: true

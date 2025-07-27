@@ -45,6 +45,7 @@ return {
   -- { import = "astrocommunity.motion.harpoon" },
   { import = "astrocommunity.motion.mini-move" },
   -- { import = "astrocommunity.motion.flash-nvim" },
+  { import = "astrocommunity.motion.marks-nvim" },
 
   -- GIT
   { import = "astrocommunity.git.blame-nvim" },
