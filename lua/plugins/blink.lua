@@ -1,3 +1,5 @@
+-- Sorting issue https://github.com/Saghen/blink.cmp/issues/1642
+-- Togglable https://github.com/LazyVim/LazyVim/discussions/5186
 return {
   "Saghen/blink.cmp",
   -- enabled = function() return not vim.tbl_contains({ "snacks_picker_input", "snacks_dashboard"}, vim.bo.filetype) end,

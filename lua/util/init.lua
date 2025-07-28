@@ -6,13 +6,10 @@ function M.copy(args)
 	return args[1]
 end
 
-function M.say_hello(name)
-  print("Hello, " .. name)
+function M.insert_at_the_top(args, user_args)
+  local bufnr = vim.api.nvim_get_current_buf()
+  -- Insert at line 0
+  vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, { user_args, "" })
 end
-
-function M.add(a, b)
-  return a + b
-end
-
 
 return M

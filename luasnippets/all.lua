@@ -1,3 +1,9 @@
+-- References tutorials
+-- https://github.com/L3MON4D3/LuaSnip#official-docs-and-examples
+-- https://www.youtube.com/watch?v=Dn800rlPIho
+-- https://www.youtube.com/watch?v=KtQZRAkgLqo
+-- https://www.youtube.com/watch?v=aNWx-ym7jjI
+
 -- https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#snip-env-diagnostics
 -- local ls = require("luasnip")
 -- local s = ls.snippet
@@ -25,8 +31,7 @@
 -- local types = require("luasnip.util.types")
 -- local parse = require("luasnip.util.parser").parse_snippet
 -- local ms = ls.multi_snippet
--- local k = require("luasnip.nodes.key_indexer").new_key
 
 return {
-	s("trig", t("lua snippets loaded!"))
+  s("trig", t "all snippets loaded!"),
 }
