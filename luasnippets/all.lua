@@ -3,6 +3,7 @@
 -- https://www.youtube.com/watch?v=Dn800rlPIho
 -- https://www.youtube.com/watch?v=KtQZRAkgLqo
 -- https://www.youtube.com/watch?v=aNWx-ym7jjI
+-- https://github.com/mireq/luasnip-snippets
 
 -- https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#snip-env-diagnostics
 -- local ls = require("luasnip")

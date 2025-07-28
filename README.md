@@ -13,7 +13,8 @@
 4. harpoon with snack picker
   - https://github.com/folke/snacks.nvim/discussions/1058
 5. luasnip
-  - how to add in astronvim
+  - custom snip list
+    - https://github.com/L3MON4D3/LuaSnip/issues/607
 6. smarts-splits
   - slowness when navigation from nvim to wezterm pane
   - https://github.com/mrjones2014/smart-splits.nvim/issues/261

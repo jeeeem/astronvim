@@ -38,7 +38,7 @@ return {
     render_modes = { "n", "c", "t" },
     anti_conceal = {
       -- This enables hiding added text on the line the cursor is on.
-      enabled = false,
+      enabled = true,
       -- Modes to disable anti conceal feature.
       disabled_modes = false,
       -- Number of lines above cursor to show.
@@ -68,7 +68,7 @@ return {
       },
     },
     code = {
-      enabled = false,
+      enabled = true,
       render_modes = false,
       sign = false,
       style = "full",
@@ -120,10 +120,10 @@ return {
     },
     completions = {
       lsp = {
-        enabled = false,
+        enabled = true,
       },
       blink = {
-        enabled = false,
+        enabled = true,
       },
     },
   },
