@@ -173,7 +173,7 @@ return {
             ["gg"] = "list_top",
             ["j"] = "list_down",
             ["k"] = "list_up",
-            ["q"] = { "close", mode = { "n", "i" } },
+            ["q"] = { "close", mode = { "n" } },
             -- ["<Esc>"] = { "close", mode = { "n", "i" } },
           },
           b = {
