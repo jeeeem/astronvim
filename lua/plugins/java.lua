@@ -1,3 +1,5 @@
+-- TODO:
+-- dynamic path for windows and linux
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.java" },
@@ -10,7 +12,7 @@ return {
             runtimes = {
               {
                 name = "JavaSE-21",
-                path = "C:/Users/jberen/scoop/apps/openjdk21/current/",
+                path = "/usr/lib/jvm/java-21-openjdk/",
               },
             },
           },

@@ -1,5 +1,5 @@
 return  {
-	s("fn", {
-		t("lua snippet")
-	})
+  s({ trig = "lua", name = "test lua snippet" }, {
+    t { '"lua snippet loaded";' },
+  }),
 }

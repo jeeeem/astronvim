@@ -34,5 +34,5 @@
 -- local ms = ls.multi_snippet
 
 return {
-  s("trig", t "all snippets loaded!"),
+  s("all", t "all snippets loaded!"),
 }

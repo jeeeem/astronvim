@@ -7,6 +7,9 @@
 local util = require "util"
 
 return {
+  s({ trig = "tsr", name = "test typescriptreact snippet" }, {
+    t { '"typescriptreact snippet loaded";' },
+  }),
   -- TODO: add use client on the top of the file
   s({ trig = "ucl", name = "use client (NextJS))" }, {
     t { '"use client";' },

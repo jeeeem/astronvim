@@ -1,4 +1,7 @@
 return {
+  s({ trig = "php", name = "test php snippet" }, {
+    t { '"php snippet loaded";' },
+  }),
   s(
     { trig = "beforeEach", name = "beforeEach() Pest function" },
     fmt(
