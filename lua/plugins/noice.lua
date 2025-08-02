@@ -277,23 +277,23 @@ return {
         },
         skip = true,
       },
-      {
-        filter = {
-          event = "msg_show",
-          any = {
-            { find = ":checkhealth vim.deprecated" }, --- Deprecation messages
-            { find = "^%d+ changes?;" }, --- Undo messages
-            { find = "more line" },
-            { find = "fewer line" },
-            { find = "line less" },
-            { find = "yanked" },
-            { find = "^/%w+" }, -- search pattern not found
-            { find = "git commit" }, --Neotree search message
-            { kind = "emsg", find = "E486" }, -- search pattern not found
-          },
-        },
-        skip = true,
-      },
+      -- {
+      --   filter = {
+      --     event = "msg_show",
+      --     any = {
+      --       { find = ":checkhealth vim.deprecated" }, --- Deprecation messages
+      --       { find = "^%d+ changes?;" }, --- Undo messages
+      --       { find = "more line" },
+      --       { find = "fewer line" },
+      --       { find = "line less" },
+      --       { find = "yanked" },
+      --       { find = "^/%w+" }, -- search pattern not found
+      --       { find = "git commit" }, --Neotree search message
+      --       { kind = "emsg", find = "E486" }, -- search pattern not found
+      --     },
+      --   },
+      --   skip = true,
+      -- },
     }, --- @see section on routes
 
     ---@type table<string, NoiceFilter>

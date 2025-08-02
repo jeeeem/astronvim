@@ -13,15 +13,16 @@ return {
 
         if vim.fn.executable "lazygit" == 1 then
           maps.n["<Leader>g"] = vim.tbl_get(opts, "_map_sections", "g")
-          maps.n["<Leader>gg"] = {
-            function()
-              local worktree = astro.file_worktree()
-              local flags = worktree and (" --work-tree=%s --git-dir=%s"):format(worktree.toplevel, worktree.gitdir)
-                or ""
-              astro.toggle_term_cmd("lazygit " .. flags)
-            end,
-            desc = "ToggleTerm lazygit",
-          }
+          -- maps.n["<Leader>gg"] = {
+          --   function()
+          --     local worktree = astro.file_worktree()
+          --     local flags = worktree and (" --work-tree=%s --git-dir=%s"):format(worktree.toplevel, worktree.gitdir)
+          --       or ""
+          --     astro.toggle_term_cmd("lazygit " .. flags)
+          --   end,
+          --   desc = "ToggleTerm lazygit",
+          -- }
+          maps.n["<Leader>gg"] = false
           maps.n["<Leader>Tl"] = maps.n["<Leader>gg"]
         end
         if vim.fn.executable "node" == 1 then
