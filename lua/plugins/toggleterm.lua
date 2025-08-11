@@ -54,7 +54,8 @@ return {
   },
   opts = {
     -- Change the default shell. Can be a string or a function returning a string
-    shell = "nu --config ~/.config/nushell/init.nu --env-config ~/.config/nushell/env.nu",
+    -- shell = "nu --config ~/.config/nushell/init.nu --env-config ~/.config/nushell/env.nu",
+    shell = "zsh",
     auto_scroll = false, -- automatically scroll to the bottom on terminal output
     terminal_mappings = false, -- whether or not the open mapping applies in the opened terminals
     shade_terminals = false,  -- NOTE: this option takes priority over highlights specified so if you specify Normal highlights you should set this to false

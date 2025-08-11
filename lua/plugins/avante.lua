@@ -1,5 +1,6 @@
 return {
   "yetone/avante.nvim",
+  enabled = false;
   opts = {
     ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
     ---@type Provider

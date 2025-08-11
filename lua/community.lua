@@ -72,7 +72,7 @@ return {
   -- { import = "astrocommunity.scrolling.mini-animate" },
 
   -- RECIPE
-  -- { import = "astrocommunity.recipe.vscode" },
+  { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
