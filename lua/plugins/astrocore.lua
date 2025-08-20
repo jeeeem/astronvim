@@ -108,7 +108,8 @@ return {
 
         ["<Leader>t"] = { desc = "󰓩 Tabs" },
         ["<Leader>t0"] = { ":0tabnew<cr>", desc = "New tab before the first tab", silent = true },
-        ["<Leader>te"] = { ":tabnew<cr>", desc = "New tab", silent = true },
+        ["<Leader>tq"] = { ":-tabnew<cr>", desc = "New tab before the current", silent = true },
+        ["<Leader>te"] = { ":tabnew<cr>", desc = "New tab after the current", silent = true },
         ["<Leader>t$"] = { ":$tabnew<cr>", desc = "New tab after the last tab", silent = true },
         ["<Leader>tE"] = { ":tabe %<cr>", desc = "New tab under the cursor file", silent = true },
         ["<Leader>tc"] = { ":tabc<cr>", desc = "Close tab", silent = true },
