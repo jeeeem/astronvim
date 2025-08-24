@@ -55,9 +55,16 @@
 - csv
   - https://github.com/hat0uma/csvview.nvim
 
+## Custom functions
+- Yank with line number
+  - https://github.com/rstacruz/vimfiles/blob/fd0fc3f539c009cc4d1a8700e14e15c839665c68/lua/config/keymaps.lua#L70-L91
 
 ## Experiment
 - https://www.reddit.com/r/neovim/comments/1js5bg8/harpoon_in_50_lines_of_lua_code_using_native/
+
+## v12 Config
+- https://github.com/vieitesss/nvim
+- https://vieitesss.github.io/posts/Neovim-new-config/
 
 ## Tutorial
 - How to make luasnip snippets
