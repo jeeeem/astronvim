@@ -120,6 +120,8 @@ return {
         --   end,
         --   desc = "Laravel: Go to definition (Laravel strings or LSP) / Go to declaration",
         -- },
+
+
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
