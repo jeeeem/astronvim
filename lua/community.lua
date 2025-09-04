@@ -74,7 +74,7 @@ return {
   -- RECIPE
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
-  { import = "astrocommunity.recipes.picker-lsp-mappings" },
+  -- { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   -- { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.vscode" },

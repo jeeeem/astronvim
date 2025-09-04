@@ -1,4 +1,3 @@
-
 return {
   "folke/snacks.nvim",
   opts = {
@@ -120,6 +119,13 @@ return {
       },
     },
     picker = {
+      jump = {
+        jumplist = true, -- save the current position in the jumplist
+        tagstack = false, -- save the current position in the tagstack
+        reuse_win = false, -- reuse an existing window if the buffer is already open
+        close = true, -- close the picker when jumping/editing to a location (defaults to true)
+        match = false, -- jump to the first match position. (useful for `lines`)
+      },
       win = {
         input = {
           keys = {
@@ -345,6 +351,52 @@ return {
         -- if vim.tbl_get(snack_opts, "zen", "enabled") ~= false then
         --   maps.n["<Leader>uZ"] = { function() require("snacks").toggle.zen():toggle() end, desc = "Toggle zen mode" }
         -- end
+      end,
+    },
+    {
+      "AstroNvim/astrolsp",
+      ---@param opts AstroLSPOpts
+      opts = function(_, opts)
+        if require("astrocore").is_available "snacks.nvim" then
+          opts.mappings.n.grr = {
+            function() require("snacks.picker").lsp_references() end,
+            desc = "LSP References",
+            cond = "textDocument/references",
+          }
+          opts.mappings.n.gri = {
+            function() require("snacks.picker").lsp_implementations() end,
+            desc = "LSP Implementations",
+            cond = "textDocument/implementation",
+          }
+          opts.mappings.n.gO = {
+            function() require("snacks.picker").lsp_symbols() end,
+            desc = "LSP Document Symbols",
+          }
+
+          if opts.mappings.n.gd then
+            opts.mappings.n.gd[1] = function()
+              require("snacks.picker").lsp_definitions {
+                finder = "lsp_definitions",
+                format = "file",
+                include_current = false,
+                auto_confirm = true,
+                jump = { tagstack = true, reuse_win = false },
+              }
+            end
+          end
+          if opts.mappings.n.gI then
+            opts.mappings.n.gI[1] = function() require("snacks.picker").lsp_implementations() end
+          end
+          if opts.mappings.n.gy then
+            opts.mappings.n.gy[1] = function() require("snacks.picker").lsp_type_definitions() end
+          end
+          if opts.mappings.n["<Leader>lG"] then
+            opts.mappings.n["<Leader>lG"][1] = function() require("snacks.picker").lsp_workspace_symbols() end
+          end
+          if opts.mappings.n["<Leader>lR"] then
+            opts.mappings.n["<Leader>lR"][1] = function() require("snacks.picker").lsp_references() end
+          end
+        end
       end,
     },
   },
