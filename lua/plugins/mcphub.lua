@@ -8,6 +8,7 @@ return {
   build = "bundled_build.lua",
   event = "User AstroFile",
   cmd = "MCPHub",
+  enabled = false,
   opts = {
     --- `mcp-hub` binary related options-------------------
     config = vim.fn.expand "~/.config/mcphub/servers.json", -- Absolute path to MCP Servers config file (will create if not exists)

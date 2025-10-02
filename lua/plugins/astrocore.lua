@@ -96,6 +96,7 @@ return {
           end,
           desc = "Toggle CWD Explorer",
         },
+        ["<Leader>E"] = { "<Cmd>Neotree toggle reveal=true position=float<CR>", desc = "Toggle Explorer" },
 
         -- setting a mapping to false will disable it
         -- ["<Leader>C"] = false,
