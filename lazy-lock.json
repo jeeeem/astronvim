@@ -26,6 +26,7 @@
   "dracula.nvim": { "branch": "main", "commit": "041d923368d540a1e438989ce8f915628081a56a" },
   "fFtT-highlights.nvim": { "branch": "master", "commit": "e6223b93de2d223415f5d959d5b97a75534bbc22" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
+  "fyler.nvim": { "branch": "stable", "commit": "5e24ff1c46528d8dc2e61c22cc21fb590f626e1e" },
   "gitignore.nvim": { "branch": "master", "commit": "0344f643768c4d64af4add8c1bdddf6f7d4c9010" },
   "gitsigns.nvim": { "branch": "main", "commit": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9" },
   "grug-far.nvim": { "branch": "main", "commit": "2e991081c0e653e151fc9e659514d7c2fc31d22a" },

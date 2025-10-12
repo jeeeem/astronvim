@@ -1,7 +1,7 @@
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  enabled = true,
+  enabled = false,
   -- config = function(plugin, opts)
   --   require "astronvim.plugins.configs.neo-tree"(plugin, opts)
   --   -- local maps = opts.mappings
