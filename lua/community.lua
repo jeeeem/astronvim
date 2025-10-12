@@ -8,16 +8,27 @@
 return {
   "AstroNvim/astrocommunity",
   -- import/override with your plugins folder
+  { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.typescript-all-in-one" },
+  { import = "astrocommunity.pack.spring-boot" },
   { import = "astrocommunity.pack.html-css" },
-  { import = "astrocommunity.pack.markdown" },
+  -- { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.mdx" },
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
+  { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.pack.just" },
+  { import = "astrocommunity.pack.nushell" },
+  { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.terraform" },
   -- { import = "astrocommunity.pack.php" },
   -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- AI
+  { import = "astrocommunity.ai.opencode-nvim" },
+
+  -- Completion
   { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.completion.copilot-cmp" },
   -- { import = "astrocommunity.completion.copilot-lua"},
@@ -55,7 +66,7 @@ return {
   -- { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
 
   -- FILE EXPLORER
-  { import = "astrocommunity.file-explorer.oil-nvim" },
+  -- { import = "astrocommunity.file-explorer.oil-nvim" },
   { import = "astrocommunity.file-explorer.mini-files" },
 
   -- Programming Language Support

@@ -1,16 +1,38 @@
 -- TODO:
 -- mark f - specific file what you open from
-local set_mark = function(id, path, desc)
-    MiniFiles.set_bookmark(id, path, { desc = desc })
-  end
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'MiniFilesExplorerOpen',
-    callback = function()
-      set_mark('c', vim.fn.stdpath('config'), 'Config') -- path
-      set_mark('w', vim.fn.getcwd, 'Working directory') -- callable
-      set_mark('~', '~', 'Home directory')
-    end,
-  })
+local set_mark = function(id, path, desc) MiniFiles.set_bookmark(id, path, { desc = desc }) end
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesExplorerOpen",
+  callback = function()
+    -- Get current working directory
+    local cwd = vim.fn.getcwd()
+
+    set_mark("c", vim.fn.stdpath "config", "Config") -- path
+    set_mark("w", vim.fn.getcwd, "Working directory") -- callable
+    set_mark("~", "~", "Home directory")
+
+    -- Helper function to check if directory exists
+    local function dir_exists(path) return vim.fn.isdirectory(path) == 1 end
+
+    -- Raiden project specific bookmarks (only if they exist)
+    if dir_exists(cwd .. "/services") then set_mark("s", cwd .. "/services", "Services") end
+    if dir_exists(cwd .. "/components") then set_mark("c", cwd .. "/components", "Components") end
+    if dir_exists(cwd .. "/libs") then set_mark("l", cwd .. "/libs", "Libs") end
+
+    -- Individual services (check if they exist)
+    if dir_exists(cwd .. "/services/raiden-order-service") then
+      set_mark("1", cwd .. "/services/raiden-order-service", "Order Service")
+    end
+
+    if dir_exists(cwd .. "/services/raiden-product-service") then
+      set_mark("2", cwd .. "/services/raiden-product-service", "Product Service")
+    end
+
+    if dir_exists(cwd .. "/services/raiden-product-instance-service") then
+      set_mark("3", cwd .. "/services/raiden-product-instance-service", "Product Instance Service")
+    end
+  end,
+})
 
 return {
   "echasnovski/mini.files",
@@ -29,19 +51,19 @@ return {
     -- Module mappings created only inside explorer.
     -- Use `''` (empty string) to not create one.
     mappings = {
-      close       = 'q',
-      go_in       = '<C-l>',
-      go_in_plus  = 'L',
-      go_out      = '<C-h>',
-      go_out_plus = 'H',
-      mark_goto   = "'",
-      mark_set    = 'm',
-      reset       = '<BS>',
-      reveal_cwd  = '@',
-      show_help   = 'g?',
-      synchronize = '=',
-      trim_left   = '<',
-      trim_right  = '>',
+      close = "q",
+      go_in = "<C-l>",
+      go_in_plus = "L",
+      go_out = "<C-h>",
+      go_out_plus = "H",
+      mark_goto = "'",
+      mark_set = "m",
+      reset = "<BS>",
+      reveal_cwd = "@",
+      show_help = "g?",
+      synchronize = "=",
+      trim_left = "<",
+      trim_right = ">",
     },
 
     -- General options
@@ -65,5 +87,5 @@ return {
       -- Width of preview window
       width_preview = 25,
     },
-  }
+  },
 }

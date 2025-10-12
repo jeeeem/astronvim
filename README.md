@@ -54,6 +54,13 @@
   - https://github.com/nvim-java/nvim-java
 - csv
   - https://github.com/hat0uma/csvview.nvim
+- presenterm
+  - https://github.com/Piotr1215/presenterm.nvim
+- checkmate
+  - https://github.com/bngarren/checkmate.nvim
+- fyler
+  - neotree and oil.nvim file manager combine
+  - https://github.com/A7Lavinraj/fyler.nvim
 
 ## Custom functions
 - Yank with line number

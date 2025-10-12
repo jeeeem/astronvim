@@ -13,24 +13,33 @@ return {
         autocmds = {
           show_latex = {
             {
-            event = "FileType",
-            pattern = {"markdown"},
-            desc = "Show Latex Popup Render",
-            callback = function()
-              vim.keymap.set("n", "gl", function()
-                require("nabla").popup { border = "rounded" }
-              end, { buffer = true, desc = "Show latex render popup" })
-              vim.keymap.set("n", "gj", function()
-                  require("nabla").disable_virt()
-              end, { buffer = true, desc = "Disable latex render virtual lines" })
-              vim.keymap.set("n", "gk", function()
-                  require("nabla").enable_virt { align_center= true }
-              end, { buffer = true, desc = "Enable latex render virtual lines" })
-            end,
-            }
-          }
-        }
-      }
+              event = "FileType",
+              pattern = { "markdown" },
+              desc = "Show Latex Popup Render",
+              callback = function()
+                vim.keymap.set(
+                  "n",
+                  "gl",
+                  function() require("nabla").popup { border = "rounded" } end,
+                  { buffer = true, desc = "Show latex render popup" }
+                )
+                vim.keymap.set(
+                  "n",
+                  "gj",
+                  function() require("nabla").disable_virt() end,
+                  { buffer = true, desc = "Disable latex render virtual lines" }
+                )
+                vim.keymap.set(
+                  "n",
+                  "gk",
+                  function() require("nabla").enable_virt { align_center = true } end,
+                  { buffer = true, desc = "Enable latex render virtual lines" }
+                )
+              end,
+            },
+          },
+        },
+      },
     },
   },
   opts = {
@@ -126,5 +135,10 @@ return {
         enabled = true,
       },
     },
+  },
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 }
