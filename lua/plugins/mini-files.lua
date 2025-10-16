@@ -7,30 +7,35 @@ vim.api.nvim_create_autocmd("User", {
     -- Get current working directory
     local cwd = vim.fn.getcwd()
 
+    -- Project root detection bookmark
+    local function find_project_root()
+      local current_dir = vim.fn.expand "%:p:h" -- current file's directory
+      local markers = { ".git", "package.json", "Cargo.toml", "go.mod", "composer.json", "pom.xml", "gradlew"}
+
+      local function has_marker(dir)
+        for _, marker in ipairs(markers) do
+          if vim.fn.isdirectory(dir .. "/" .. marker) == 1 or vim.fn.filereadable(dir .. "/" .. marker) == 1 then
+            return true
+          end
+        end
+        return false
+      end
+
+      -- Traverse up from current directory
+      local dir = current_dir
+      while dir ~= "/" and dir ~= "" do
+        if has_marker(dir) then return dir end
+        dir = vim.fn.fnamemodify(dir, ":h")
+      end
+
+      return cwd -- fallback to cwd if no project root found
+    end
+
     set_mark("c", vim.fn.stdpath "config", "Config") -- path
+    set_mark("p", vim.fn.expand "~/projects", "Projects Directory") -- project
+    set_mark("r", find_project_root, "Project Root")
     set_mark("w", vim.fn.getcwd, "Working directory") -- callable
     set_mark("~", "~", "Home directory")
-
-    -- Helper function to check if directory exists
-    local function dir_exists(path) return vim.fn.isdirectory(path) == 1 end
-
-    -- Raiden project specific bookmarks (only if they exist)
-    if dir_exists(cwd .. "/services") then set_mark("s", cwd .. "/services", "Services") end
-    if dir_exists(cwd .. "/components") then set_mark("c", cwd .. "/components", "Components") end
-    if dir_exists(cwd .. "/libs") then set_mark("l", cwd .. "/libs", "Libs") end
-
-    -- Individual services (check if they exist)
-    if dir_exists(cwd .. "/services/raiden-order-service") then
-      set_mark("1", cwd .. "/services/raiden-order-service", "Order Service")
-    end
-
-    if dir_exists(cwd .. "/services/raiden-product-service") then
-      set_mark("2", cwd .. "/services/raiden-product-service", "Product Service")
-    end
-
-    if dir_exists(cwd .. "/services/raiden-product-instance-service") then
-      set_mark("3", cwd .. "/services/raiden-product-instance-service", "Product Instance Service")
-    end
   end,
 })
 
@@ -85,7 +90,7 @@ return {
       -- Width of non-focused window
       width_nofocus = 15,
       -- Width of preview window
-      width_preview = 25,
+      width_preview = 50,
     },
   },
 }
