@@ -36,7 +36,7 @@ return {
 
   -- PROGRAMMING SUPPORT
   { import = "astrocommunity.programming-language-support.kulala-nvim" },
-  { import = "astrocommunity.code-runner.overseer-nvim" },
+  -- { import = "astrocommunity.code-runner.overseer-nvim" },
 
   -- EDITING SUPPORT
   -- { import = "astrocommunity.editing-support.mcphub-nvim"},
