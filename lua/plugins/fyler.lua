@@ -1,5 +1,6 @@
 return {
   "A7Lavinraj/fyler.nvim",
+  enabled = false,
   dependencies = { "nvim-mini/mini.icons" },
   branch = "stable",
   opts = {
@@ -60,14 +61,13 @@ return {
       ["q"] = "CloseView",
       -- ["<CR>"] = "Select",
       -- ["<BS>"] = "CollapseNode",
-      ["L"] = "Select",
-      ["H"] = "CollapseNode",
+      ["<C-l>"] = "Select",
+      ["<C-h>"] = "CollapseNode",
       ["<C-t>"] = "SelectTab",
       ["|"] = "SelectVSplit",
       ["-"] = "SelectSplit",
       ["^"] = "GotoParent",
       ["="] = "GotoCwd",
-      ["."] = "GotoNode",
       ["#"] = "CollapseAll",
     },
 

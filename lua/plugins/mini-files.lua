@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("User", {
     -- Project root detection bookmark
     local function find_project_root()
       local current_dir = vim.fn.expand "%:p:h" -- current file's directory
-      local markers = { ".git", "package.json", "Cargo.toml", "go.mod", "composer.json", "pom.xml", "gradlew"}
+      local markers = { ".git", "package.json", "Cargo.toml", "go.mod", "composer.json", "pom.xml", "gradlew" }
 
       local function has_marker(dir)
         for _, marker in ipairs(markers) do
@@ -36,6 +36,54 @@ vim.api.nvim_create_autocmd("User", {
     set_mark("r", find_project_root, "Project Root")
     set_mark("w", vim.fn.getcwd, "Working directory") -- callable
     set_mark("~", "~", "Home directory")
+  end,
+})
+
+-- Set focused directory as current working directory
+local set_cwd = function()
+  local path = (MiniFiles.get_fs_entry() or {}).path
+  if path == nil then return vim.notify "Cursor is not on valid entry" end
+  vim.fn.chdir(vim.fs.dirname(path))
+end
+
+-- Yank in register full path of entry under cursor
+local yank_path = function()
+  local path = (MiniFiles.get_fs_entry() or {}).path
+  if path == nil then return vim.notify "Cursor is not on valid entry" end
+  vim.fn.setreg(vim.v.register, path)
+end
+
+-- Open path with system default handler (useful for non-text files)
+local ui_open = function() vim.ui.open(MiniFiles.get_fs_entry().path) end
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesBufferCreate",
+  callback = function(args)
+    local b = args.data.buf_id
+    vim.keymap.set("n", "g~", set_cwd, { buffer = b, desc = "Set cwd" })
+    vim.keymap.set("n", "gX", ui_open, { buffer = b, desc = "OS open" })
+    vim.keymap.set("n", "gY", yank_path, { buffer = b, desc = "Yank path" })
+  end,
+})
+
+local show_dotfiles = true
+
+local filter_show = function(fs_entry) return true end
+
+local filter_hide = function(fs_entry) return not vim.startswith(fs_entry.name, ".") end
+
+local toggle_dotfiles = function()
+  show_dotfiles = not show_dotfiles
+  local new_filter = show_dotfiles and filter_show or filter_hide
+  MiniFiles.refresh { content = { filter = new_filter } }
+end
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesBufferCreate",
+  callback = function(args)
+    local buf_id = args.data.buf_id
+    -- Tweak left-hand side of mapping to your liking
+    vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
   end,
 })
 
