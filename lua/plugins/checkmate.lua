@@ -1,3 +1,4 @@
+local prefix = "<leader>c"
 return {
   "bngarren/checkmate.nvim",
   ft = "markdown", -- Lazy loads for Markdown files matching patterns in 'files'
@@ -22,62 +23,63 @@ return {
     },
     -- Default keymappings
     keys = {
-      ["<leader>Tt"] = {
+      -- ["<leader>Ct"] = {
+      [prefix .. "t"] = {
         rhs = "<cmd>Checkmate toggle<CR>",
         desc = "Toggle todo item",
         modes = { "n", "v" },
       },
-      ["<leader>Tc"] = {
+      [prefix .. "c"] = {
         rhs = "<cmd>Checkmate check<CR>",
         desc = "Set todo item as checked (done)",
         modes = { "n", "v" },
       },
-      ["<leader>Tu"] = {
+      [prefix .. "u"] = {
         rhs = "<cmd>Checkmate uncheck<CR>",
         desc = "Set todo item as unchecked (not done)",
         modes = { "n", "v" },
       },
-      ["<leader>T="] = {
+      [prefix .. "="] = {
         rhs = "<cmd>Checkmate cycle_next<CR>",
         desc = "Cycle todo item(s) to the next state",
         modes = { "n", "v" },
       },
-      ["<leader>T-"] = {
+      [prefix .. "-"] = {
         rhs = "<cmd>Checkmate cycle_previous<CR>",
         desc = "Cycle todo item(s) to the previous state",
         modes = { "n", "v" },
       },
-      ["<leader>Tn"] = {
+      [prefix .. "n"] = {
         rhs = "<cmd>Checkmate create<CR>",
         desc = "Create todo item",
         modes = { "n", "v" },
       },
-      ["<leader>Tr"] = {
+      [prefix .. "r"] = {
         rhs = "<cmd>Checkmate remove<CR>",
         desc = "Remove todo marker (convert to text)",
         modes = { "n", "v" },
       },
-      ["<leader>TR"] = {
+      [prefix .. "R"] = {
         rhs = "<cmd>Checkmate remove_all_metadata<CR>",
         desc = "Remove all metadata from a todo item",
         modes = { "n", "v" },
       },
-      ["<leader>Ta"] = {
+      [prefix .. "a"] = {
         rhs = "<cmd>Checkmate archive<CR>",
         desc = "Archive checked/completed todo items (move to bottom section)",
         modes = { "n" },
       },
-      ["<leader>Tv"] = {
+      [prefix .. "v"] = {
         rhs = "<cmd>Checkmate metadata select_value<CR>",
         desc = "Update the value of a metadata tag under the cursor",
         modes = { "n" },
       },
-      ["<leader>T]"] = {
+      [prefix .. "]"] = {
         rhs = "<cmd>Checkmate metadata jump_next<CR>",
         desc = "Move cursor to next metadata tag",
         modes = { "n" },
       },
-      ["<leader>T["] = {
+      [prefix .. "["] = {
         rhs = "<cmd>Checkmate metadata jump_previous<CR>",
         desc = "Move cursor to previous metadata tag",
         modes = { "n" },
@@ -148,7 +150,7 @@ return {
           return "medium" -- Default priority
         end,
         choices = function() return { "low", "medium", "high" } end,
-        key = "<leader>Tp",
+        key = prefix .. "p",
         sort_order = 10,
         jump_to_on_insert = "value",
         select_on_insert = true,
@@ -158,7 +160,7 @@ return {
         aliases = { "init" },
         style = { fg = "#9fd6d5" },
         get_value = function() return tostring(os.date "%m/%d/%y %H:%M") end,
-        key = "<leader>Ts",
+        key = prefix .. "s",
         sort_order = 20,
       },
       -- Example: A @done tag that also sets the todo item state when it is added and removed
@@ -166,7 +168,7 @@ return {
         aliases = { "completed", "finished" },
         style = { fg = "#96de7a" },
         get_value = function() return tostring(os.date "%m/%d/%y %H:%M") end,
-        key = "<leader>Td",
+        key = prefix .. "d",
         on_add = function(todo_item) require("checkmate").set_todo_item(todo_item, "checked") end,
         on_remove = function(todo_item) require("checkmate").set_todo_item(todo_item, "unchecked") end,
         sort_order = 30,

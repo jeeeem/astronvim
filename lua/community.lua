@@ -22,7 +22,7 @@ return {
   { import = "astrocommunity.pack.nushell" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.terraform" },
-  -- { import = "astrocommunity.pack.php" },
+  { import = "astrocommunity.pack.laravel" },
   -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- AI

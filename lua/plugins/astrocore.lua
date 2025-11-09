@@ -108,6 +108,9 @@ return {
         ["<Leader>q"] = false,
         ["<Leader>n"] = false,
         ["<Leader>w"] = false,
+        ["<Leader>c"] = false,
+        ["<Leader>C"] = false,
+        ["<Leader>Q"] = false,
 
         ["<Leader>t"] = { desc = "󰓩 Tabs" },
         ["<Leader>t0"] = { ":0tabnew<cr>", desc = "New tab before the first tab", silent = true },
