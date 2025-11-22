@@ -26,7 +26,7 @@ return {
   -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- AI
-  { import = "astrocommunity.ai.opencode-nvim" },
+  -- { import = "astrocommunity.ai.opencode-nvim" },
 
   -- Completion
   { import = "astrocommunity.completion.avante-nvim" },

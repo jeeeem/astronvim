@@ -15,24 +15,20 @@ return {
   "NickvanDyke/opencode.nvim",
   enabled = true,
   config = function()
+    -- https://github.com/NickvanDyke/opencode.nvim/blob/main/lua/opencode/config.lua
     vim.g.opencode_opts = {
-      --   -- Your configuration, if any — see `lua/opencode/config.lua`
-      --   port = nil,
-      --   on_opencode_not_found = function()
-      --     -- Ignore error so users can safely exclude `snacks.nvim` dependency without overriding this function.
-      --     -- Could incidentally hide an unexpected error in `snacks.terminal`, but seems unlikely.
-      --
-      --     -- Don't call built-in terminal, I preferred to use opencode in terminal multiplexer (zellij)
-      --     -- pcall(require("opencode.terminal").open)
-      --   end,
-      --   on_send = function()
-      --     -- "if exists" because user may alternate between embedded and external opencode.
-      --     -- `opts.on_opencode_not_found` comments also apply here.
-      --     pcall(require("opencode.terminal").show_if_exists)
-      --   end,
-      --
-      -- }
-      --
+      contexts = {
+        ["@selection"] = function(ctx) return ctx:visual_selection() end,
+        ["@this"] = function(context) return context:this() end,
+        ["@buffer"] = function(context) return context:buffer() end,
+        ["@buffers"] = function(context) return context:buffers() end,
+        ["@visible"] = function(context) return context:visible_text() end,
+        ["@diagnostics"] = function(context) return context:diagnostics() end,
+        ["@quickfix"] = function(context) return context:quickfix() end,
+        ["@diff"] = function(context) return context:git_diff() end,
+        ["@grapple"] = function(context) return context:grapple_tags() end,
+      },
+      
       ---@type opencode.Provider
       provider = {
         toggle = function(self)
@@ -52,47 +48,48 @@ return {
 
     -- Required for `vim.g.opencode_opts.auto_reload`.
     vim.o.autoread = true
-
-    -- Recommended/example keymaps.
-    vim.keymap.set(
-      { "n", "x" },
-      "<leader>oa",
-      function() require("opencode").ask("@this: ", { submit = true }) end,
-      { desc = "Ask about this" }
-    )
-    vim.keymap.set({ "n", "x" }, "<leader>os", function() require("opencode").select() end, { desc = "Select prompt" })
-    vim.keymap.set({ "n", "x" }, "<leader>o+", function() require("opencode").prompt "@this" end, { desc = "Add this" })
-    vim.keymap.set("n", "<leader>ot", function() require("opencode").toggle() end, { desc = "Toggle embedded" })
-    vim.keymap.set("n", "<leader>oc", function() require("opencode").command() end, { desc = "Select command" })
-    vim.keymap.set(
-      "n",
-      "<leader>on",
-      function() require("opencode").command "session_new" end,
-      { desc = "New session" }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>oi",
-      function() require("opencode").command "session_interrupt" end,
-      { desc = "Interrupt session" }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>oA",
-      function() require("opencode").command "agent_cycle" end,
-      { desc = "Cycle selected agent" }
-    )
-    vim.keymap.set(
-      "n",
-      "<S-C-u>",
-      function() require("opencode").command "messages_half_page_up" end,
-      { desc = "Messages half page up" }
-    )
-    vim.keymap.set(
-      "n",
-      "<S-C-d>",
-      function() require("opencode").command "messages_half_page_down" end,
-      { desc = "Messages half page down" }
-    )
   end,
+
+  specs = {
+    {
+      "AstroNvim/astrocore",
+      ---@param opts AstroCoreOpts
+      opts = function(_, opts)
+        local maps = assert(opts.mappings)
+        local prefix = "<Leader>O"
+        maps.n[prefix] = { desc = require("astroui").get_icon("OpenCode", 1, true) .. "OpenCode" }
+        maps.n[prefix .. "a"] = {
+          function() require("opencode").ask "@cursor: " end,
+          desc = "Ask about this",
+        }
+        maps.n[prefix .. "+"] = {
+          function() require("opencode").prompt("@buffer", { append = true }) end,
+          desc = "Add buffer to prompt",
+        }
+        maps.n[prefix .. "e"] = {
+          function() require("opencode").prompt "Explain @cursor and its context" end,
+          desc = "Explain this code",
+        }
+        maps.n[prefix .. "s"] = {
+          function() require("opencode").select() end,
+          desc = "Select prompt",
+        }
+
+        maps.v[prefix] = { desc = require("astroui").get_icon("OpenCode", 1, true) .. "OpenCode" }
+        maps.v[prefix .. "a"] = {
+          function() require("opencode").ask "@selection: " end,
+          desc = "Ask about selection",
+        }
+        maps.v[prefix .. "+"] = {
+          function() require("opencode").prompt("@selection", { append = true }) end,
+          desc = "Add selection to prompt",
+        }
+        maps.v[prefix .. "s"] = {
+          function() require("opencode").select() end,
+          desc = "Select prompt",
+        }
+      end,
+    },
+    { "AstroNvim/astroui", opts = { icons = { OpenCode = "" } } },
+  },
 }
