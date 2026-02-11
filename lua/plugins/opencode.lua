@@ -18,7 +18,6 @@ return {
     -- https://github.com/NickvanDyke/opencode.nvim/blob/main/lua/opencode/config.lua
     vim.g.opencode_opts = {
       contexts = {
-        ["@selection"] = function(ctx) return ctx:visual_selection() end,
         ["@this"] = function(context) return context:this() end,
         ["@buffer"] = function(context) return context:buffer() end,
         ["@buffers"] = function(context) return context:buffers() end,
@@ -77,7 +76,7 @@ return {
 
         maps.v[prefix] = { desc = require("astroui").get_icon("OpenCode", 1, true) .. "OpenCode" }
         maps.v[prefix .. "a"] = {
-          function() require("opencode").ask "@selection: " end,
+          function() require("opencode").ask "@this: " end,
           desc = "Ask about selection",
         }
         maps.v[prefix .. "+"] = {

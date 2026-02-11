@@ -60,7 +60,7 @@ return {
 
   -- GIT
   { import = "astrocommunity.git.blame-nvim" },
-  { import = "astrocommunity.git.diffview-nvim" },
+  { import = "astrocommunity.git.codediff-nvim" },
 
   -- FUZZY
   -- { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
