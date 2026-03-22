@@ -1,5 +1,63 @@
 return {
   "folke/snacks.nvim",
+  init = function()
+    -- Patch the snacks picker matcher to support fuzzy file:line without
+    -- requiring a file extension or path separator.
+    -- e.g. `readme:120` fuzzy-matches filenames containing "readme" and jumps to line 120
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "VeryLazy",
+      once = true,
+      callback = function()
+        local ok, Matcher = pcall(require, "snacks.picker.core.matcher")
+        if not ok or not Matcher._prepare then return end
+        local orig_prepare = Matcher._prepare
+        Matcher._prepare = function(self, pattern)
+          -- Only intercept if: not regex mode, no file already parsed,
+          -- pattern is `word:digits` with no . / \ (those are handled by snacks natively)
+          if not self.file and not self.opts.regex then
+            local file, line, col = pattern:match("^(%S+):(%d+):?(%d*)$")
+            if file and not file:match("[/\\%.]") then
+              self.file = {
+                path = file,
+                pos = { tonumber(line) or 1, tonumber(col) or 0 },
+              }
+              -- Rewrite as `file:<name>` so the original processes it as
+              -- a fuzzy field search on `item.file`
+              return orig_prepare(self, "file:" .. file)
+            end
+          end
+          return orig_prepare(self, pattern)
+        end
+
+        -- Clamp item.pos[1] to valid line range to prevent
+        -- "Cursor position outside buffer" crash on jump.
+        -- Too high → last line, too low → first line.
+        local ok2, Actions = pcall(require, "snacks.picker.actions")
+        if ok2 and Actions.jump then
+          local orig_jump = Actions.jump
+          Actions.jump = function(picker, item, action)
+            local items = picker:selected({ fallback = true })
+            for _, it in ipairs(items) do
+              if it.pos then
+                local path = Snacks.picker.util.path(it)
+                if path then
+                  local buf = vim.fn.bufadd(path)
+                  vim.fn.bufload(buf)
+                  local line_count = vim.api.nvim_buf_line_count(buf)
+                  if it.pos[1] > line_count then
+                    it.pos[1] = line_count -- too high → last line
+                  elseif it.pos[1] < 1 then
+                    it.pos[1] = 1 -- too low → first line
+                  end
+                end
+              end
+            end
+            return orig_jump(picker, item, action)
+          end
+        end
+      end,
+    })
+  end,
   opts = {
     image = {
       formats = {
@@ -119,6 +177,29 @@ return {
       },
     },
     picker = {
+      -- filename_modifier = function(fn)
+      --   -- Parse file:line:col format like Telescope
+      --   local path, line, col = fn:match("^(.-):(%d+):?(%d*)$")
+      --   if path then
+      --     -- Return just the filename (line:col handled by Snacks jump)
+      --     return path
+      --   end
+      --   return fn
+      -- end,
+      matcher = {
+        fuzzy = true, -- use fuzzy matching
+        smartcase = true, -- use smartcase
+        ignorecase = true, -- use ignorecase
+        sort_empty = false, -- sort results when the search string is empty
+        filename_bonus = true, -- give bonus for matching file names (last part of the path)
+        file_pos = true, -- support patterns like `file:line:col` and `file:line`
+        -- the bonusses below, possibly require string concatenation and path normalization,
+        -- so this can have a performance impact for large lists and increase memory usage
+        cwd_bonus = false, -- give bonus for matching files in the cwd
+        frecency = false, -- frecency bonus
+        history_bonus = false, -- give more weight to chronological order
+      },
+
       jump = {
         jumplist = true, -- save the current position in the jumplist
         tagstack = false, -- save the current position in the tagstack

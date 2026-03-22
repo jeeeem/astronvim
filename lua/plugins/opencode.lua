@@ -27,22 +27,6 @@ return {
         ["@diff"] = function(context) return context:git_diff() end,
         ["@grapple"] = function(context) return context:grapple_tags() end,
       },
-      
-      ---@type opencode.Provider
-      provider = {
-        toggle = function(self)
-          -- Called by `require("opencode").toggle()`
-        end,
-        start = function(self)
-          -- Called when sending a prompt or command to `opencode` but no process was found.
-          -- `opencode.nvim` will poll for a couple seconds waiting for one to appear.
-        end,
-        show = function(self)
-          -- Called when a prompt or command is sent to `opencode`,
-          -- *and* this provider's `toggle` or `start` has previously been called
-          -- (so as to not interfere when `opencode` was started externally).
-        end,
-      },
     }
 
     -- Required for `vim.g.opencode_opts.auto_reload`.

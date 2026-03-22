@@ -23,6 +23,8 @@ return {
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.laravel" },
+  { import = "astrocommunity.pack.python.base" },
+  { import = "astrocommunity.pack.python.ruff" },
   -- { import = "astrocommunity.pack.full-dadbod" },
 
   -- AI
@@ -49,7 +51,7 @@ return {
   -- MARKDOWN
   -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
-  { import = "astrocommunity.markdown-and-latex.peek-nvim" },
+  -- { import = "astrocommunity.markdown-and-latex.peek-nvim" },
 
   -- MOTION
   { import = "astrocommunity.motion.nvim-surround" },
