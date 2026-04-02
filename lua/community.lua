@@ -31,7 +31,7 @@ return {
   -- { import = "astrocommunity.ai.opencode-nvim" },
 
   -- Completion
-  { import = "astrocommunity.completion.avante-nvim" },
+  -- { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.completion.copilot-cmp" },
   -- { import = "astrocommunity.completion.copilot-lua"},
   -- { import = "astrocommunity.completion.copilot-lua-cmp"},
@@ -50,7 +50,7 @@ return {
 
   -- MARKDOWN
   -- { import = "astrocommunity.markdown-and-latex.markview-nvim" },
-  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
+  -- { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   -- { import = "astrocommunity.markdown-and-latex.peek-nvim" },
 
   -- MOTION

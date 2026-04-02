@@ -21,6 +21,9 @@ return {
       level = "warn",
       use_file = true,
     },
+    ui = {
+      picker = "native" -- or "mini", "telescope", or "native"
+    },
     -- Default keymappings
     keys = {
       -- ["<leader>Ct"] = {
@@ -54,13 +57,18 @@ return {
         desc = "Create todo item",
         modes = { "n", "v" },
       },
+      [prefix .. "p"] = {
+        rhs = "<cmd>Checkmate select_todo<CR>",
+        desc = "Create todo item",
+        modes = { "n", "v" },
+      },
       [prefix .. "r"] = {
         rhs = "<cmd>Checkmate remove<CR>",
         desc = "Remove todo marker (convert to text)",
         modes = { "n", "v" },
       },
       [prefix .. "R"] = {
-        rhs = "<cmd>Checkmate remove_all_metadata<CR>",
+        rhs = "<cmd>Checkmate metadata remove_all<CR>",
         desc = "Remove all metadata from a todo item",
         modes = { "n", "v" },
       },
@@ -100,7 +108,7 @@ return {
       },
     },
     style = {}, -- override defaults
-    enter_insert_after_new = true, -- Should enter INSERT mode after `:Checkmate create` (new todo)
+    enter_insert_after_new = false, -- Should enter INSERT mode after `:Checkmate create` (new todo)
     list_continuation = {
       enabled = true,
       split_line = true,
@@ -150,7 +158,7 @@ return {
           return "medium" -- Default priority
         end,
         choices = function() return { "low", "medium", "high" } end,
-        key = prefix .. "p",
+        key = prefix .. "1",
         sort_order = 10,
         jump_to_on_insert = "value",
         select_on_insert = true,
@@ -169,8 +177,8 @@ return {
         style = { fg = "#96de7a" },
         get_value = function() return tostring(os.date "%m/%d/%y %H:%M") end,
         key = prefix .. "d",
-        on_add = function(todo_item) require("checkmate").set_todo_item(todo_item, "checked") end,
-        on_remove = function(todo_item) require("checkmate").set_todo_item(todo_item, "unchecked") end,
+        on_add = function(todo_item) require("checkmate").set_todo_state(todo_item, "checked") end,
+        on_remove = function(todo_item) require("checkmate").set_todo_state(todo_item, "unchecked") end,
         sort_order = 30,
       },
     },
