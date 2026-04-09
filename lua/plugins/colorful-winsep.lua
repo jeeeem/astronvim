@@ -2,7 +2,7 @@ return {
   {
     "nvim-zh/colorful-winsep.nvim",
     -- commit = "e1b72c498f25c1fc37a7e9913332c137f753a90a",
-    commit = "f5378e7a51e265a92e3a156e134bc902d61bf339",
+    -- commit = "f5378e7a51e265a92e3a156e134bc902d61bf339",
     config = function()
       require("colorful-winsep").setup {
         -- highlight for Window separator

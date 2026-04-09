@@ -1,6 +1,20 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
---
 -- Customize Treesitter
+vim.keymap.set({ "x" }, "<BS>", function()
+	if vim.treesitter.get_parser(nil, nil, { error = false }) then
+	  require("vim.treesitter._select").select_parent(vim.v.count1)
+	else
+		vim.lsp.buf.selection_range(vim.v.count1)
+	end
+end, { desc = "Select parent (outer) node or outer incremental lsp selections" })
+
+vim.keymap.set({ "x" }, "<CR>", function()
+	if vim.treesitter.get_parser(nil, nil, { error = false }) then
+		require("vim.treesitter._select").select_child(vim.v.count1)
+	else
+		vim.lsp.buf.selection_range(-vim.v.count1)
+	end
+end, { desc = "Select child (inner) node or inner incremental lsp selections" })
 
 ---@type LazySpec
 return {
