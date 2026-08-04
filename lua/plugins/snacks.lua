@@ -1,5 +1,7 @@
+local splash = require("milli").load({ splash = "fire" })
 return {
   "folke/snacks.nvim",
+  dependencies = { "amansingh-afk/milli.nvim" },
   init = function()
     -- Patch the snacks picker matcher to support fuzzy file:line without
     -- requiring a file extension or path separator.
@@ -15,8 +17,8 @@ return {
           -- Only intercept if: not regex mode, no file already parsed,
           -- pattern is `word:digits` with no . / \ (those are handled by snacks natively)
           if not self.file and not self.opts.regex then
-            local file, line, col = pattern:match("^(%S+):(%d+):?(%d*)$")
-            if file and not file:match("[/\\%.]") then
+            local file, line, col = pattern:match "^(%S+):(%d+):?(%d*)$"
+            if file and not file:match "[/\\%.]" then
               self.file = {
                 path = file,
                 pos = { tonumber(line) or 1, tonumber(col) or 0 },
@@ -36,7 +38,7 @@ return {
         if ok2 and Actions.jump then
           local orig_jump = Actions.jump
           Actions.jump = function(picker, item, action)
-            local items = picker:selected({ fallback = true })
+            local items = picker:selected { fallback = true }
             for _, it in ipairs(items) do
               if it.pos then
                 local path = Snacks.picker.util.path(it)
@@ -59,6 +61,17 @@ return {
     })
   end,
   opts = {
+    dashboard = {
+      enabled = true,
+      preset = {
+        header = table.concat(splash.frames[1], "\n"),
+      },
+      sections = {
+        { section = "header", padding = 1 },
+        { section = "keys", gap = 1, padding = 1 },
+        { section = "startup" },
+      },
+    },
     image = {
       formats = {
         "png",

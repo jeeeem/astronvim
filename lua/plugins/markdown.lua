@@ -140,16 +140,29 @@ return {
     "davidmh/mdx.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
+  -- {
+  --   "selimacerbas/markdown-preview.nvim",
+  --   dependencies = { "selimacerbas/live-server.nvim" },
+  --   config = function()
+  --     require("markdown_preview").setup {
+  --       -- all optional; sane defaults shown
+  --       instance_mode = "multi",  -- "takeover" (one tab) or "multi" (tab per instance)
+  --       port = 0,
+  --       open_browser = true,
+  --       debounce_ms = 300,
+  --     }
+  --   end,
+  -- },
   {
-    "selimacerbas/markdown-preview.nvim",
-    dependencies = { "selimacerbas/live-server.nvim" },
-    config = function()
-      require("markdown_preview").setup {
-        -- all optional; sane defaults shown
-        port = 8421,
-        open_browser = true,
-        debounce_ms = 300,
-      }
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = "cd app && bun install",
+    init = function()
+      vim.g.mkduup_open_ip = "127.0.0.1"
+      vim.g.mkdp_port = 1111
+      vim.g.mkdp_browser = "none"
+      vim.g.mkdp_echo_preview_url = 1
     end,
   },
 }

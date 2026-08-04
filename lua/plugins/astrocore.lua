@@ -159,6 +159,41 @@ return {
       t = {
         ["<Esc>"] = {"<C-\\><C-N>"} -- map <Esc> to exit terminal-mode
       },
+
+      v = {
+        ["gY"] = {
+          function()
+            local function copy_location(opts)
+              -- opts.line1 and opts.line2 are automatically provided
+              local start_line = opts.line1
+              local end_line = opts.line2
+
+              local filepath = vim.fn.expand("%:p")
+              if filepath == "" then
+                print("No file")
+                return
+              end
+
+              local result
+              if start_line == end_line then
+                result = filepath .. ":L" .. start_line
+              else
+                result = filepath .. ":L" .. start_line .. "-L" .. end_line
+              end
+
+              vim.fn.setreg('"', result)
+              vim.fn.setreg('+', result)
+
+              print("Copied:", result)
+            end
+
+            copy_location({
+              line1 = vim.fn.line("v"),
+              line2 = vim.fn.line("."),
+            })
+          end
+        }
+      }
     },
   },
 }
